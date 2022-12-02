@@ -82,6 +82,7 @@
       </div>
     </section>
 
+    <!--RCMSでは自由HTMLで記載-->
     <section class="l-container--middle l-container--contents t-article-list">
       <ul class="c-topics__card__list">
         <li class="c-topics__card__item"><a class="c-topics__card__link"
@@ -121,6 +122,11 @@
 
 <script>
 export default {
-  name: 'IndexPage'
-}
+  async asyncData({ $axios }) {
+    return {
+      response: await $axios.$get('/rcms-api/1/news/list'),
+      response: await $axios.$get(`/rcms-api/1/content/details/company`),
+    };
+  },
+};
 </script>
