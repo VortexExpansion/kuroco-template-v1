@@ -3,59 +3,43 @@
     <section class="l-container--contents">
       <div class="c-slider flexslider" data-js="flexslider">
 
-        <div class="flex-viewport" style="overflow: hidden; position: relative;">
-          <ul class="c-slider__inner slides"
-            style="width: 800%; transition-duration: 0s; transform: translate3d(-803.333px, 0px, 0px);">
-            <li class="c-slider__item clone" aria-hidden="true"
-              style="width: 803.333px; margin-right: 0px; float: left; display: block;">
-              <a rel="noopener" href="https://rcms-template-v1.r-cms.jp/news/" target="_blank">
-                <picture>
-                  <source media="(max-width: 768px)" srcset="/files/topics/30_ext_02_0.png?v=1516778702"> <img
-                    src="/files/topics/30_ext_01_0.png?v=1516941623" alt="" draggable="false">
-                </picture>
-              </a>
-            </li>
-            <li class="c-slider__item flex-active-slide"
-              style="width: 803.333px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
-              <picture>
-                <source media="(max-width: 768px)" srcset="/files/topics/29_ext_02_0.png?v=1516778702"> <img
-                  src="/files/topics/29_ext_01_0.png?v=1516941605" alt="" draggable="false">
-              </picture>
-            </li>
-            <li class="c-slider__item" data-thumb-alt=""
-              style="width: 803.333px; margin-right: 0px; float: left; display: block;">
-              <a rel="noopener" href="https://rcms-template-v1.r-cms.jp/news/" target="_blank">
-                <picture>
-                  <source media="(max-width: 768px)" srcset="/files/topics/30_ext_02_0.png?v=1516778702"> <img
-                    src="/files/topics/30_ext_01_0.png?v=1516941623" alt="" draggable="false">
-                </picture>
-              </a>
-            </li>
-            <li class="c-slider__item clone" style="width: 803.333px; margin-right: 0px; float: left; display: block;"
-              aria-hidden="true">
-              <picture>
-                <source media="(max-width: 768px)" srcset="/files/topics/29_ext_02_0.png?v=1516778702"> <img
-                  src="/files/topics/29_ext_01_0.png?v=1516941605" alt="" draggable="false">
-              </picture>
+        <div class="flex-viewport" >
+          <ul class="c-slider__inner slides">
+            <li v-for="n in response_visual.list" :key="n.topics_id" class="flex-active-slide">
+              <div class="pc">
+                <div class="c-slider__item clone" >
+                  <picture>
+                    <img :src="n.ext_1.url" alt="" draggable="false">
+                  </picture>
+                </div>
+              </div>
+              <div class="sp">
+                <div class="c-slider__item clone" aria-hidden="true">
+                  <picture>
+                    <img :src="n.ext_2.url" alt="" draggable="false">
+                  </picture>
+                </div>
+              </div>
             </li>
           </ul>
         </div>
         <ol class="flex-control-nav flex-control-paging">
-          <li><a href="#" class="flex-active">1</a></li>
-          <li><a href="#" class="">2</a></li>
+          <li v-for="i in response_visual.pageInfo.totalCnt" :key="i">
+            <a href="#" class="flex-active">{{ i }}</a>
+          </li>
         </ol>
       </div>
     </section>
 
     <section class="l-container--middle l-container--contents t-article-list p-top-topics__list">
       <ul class="c-topics__list">
-        <li v-for="n in response.list" :key="n.slug" class="c-topics__item">
-          <time class="c-topics__date" :datetime=n.ymd>{{n.ymd}}</time>
+        <li v-for="n in response.list" :key="n.topics_id" class="c-topics__item">
+          <time class="c-topics__date" :datetime=n.ymd>{{ n.ymd }}</time>
           <div class="c-topics__label">
-            {{n.contents_type_nm}}
+            {{ n.contents_type_nm }}
           </div>
           <div class="c-topics__title">
-            <nuxt-link :to="`/news/detail/${n.topics_id}`">{{n.subject}}</nuxt-link>
+            <nuxt-link :to="`/news/detail/${n.topics_id}`">{{ n.subject }}</nuxt-link>
           </div>
         </li>
       </ul>
@@ -107,9 +91,35 @@
 export default {
   async asyncData({ $axios }) {
     return {
-      response: await $axios.$get('/rcms-api/1/news/list',{params:{cnt:3}}),
+      response: await $axios.$get('/rcms-api/1/news/list', { params: { cnt: 3 } }),
       response_visual: await $axios.$get('/rcms-api/1/main_visual'),
     };
   },
 };
 </script>
+
+<style>
+li.flex-active-slide {
+    display: block !important;
+}
+
+@media all and (max-width: 768px) {
+  .sp {
+    display: block;
+  }
+
+  .pc {
+    display: none;
+  }
+}
+
+@media all and (min-width: 769px) {
+  .sp {
+    display: none;
+  }
+
+  .pc {
+    display: block;
+  }
+}
+</style>
