@@ -15,7 +15,7 @@
           <h1 class="c-heading--lv1">ニュース</h1>
           <ul class="c-topics__list p-news__list">
 
-            <li v-for="n in response.list" :key="n.slug" class="c-topics__item">
+            <li v-for="n in response.list" :key="n.topics_id" class="c-topics__item">
               <time class="c-topics__date" :datetime=n.ymd>{{n.ymd}}</time>
               <div class="c-topics__label">
                 {{n.contents_type_nm}}
