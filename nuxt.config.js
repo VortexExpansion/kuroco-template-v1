@@ -48,6 +48,9 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: process.env.BASE_URL,
+    // クロスオリジンでのcookieを有効化 https://kuroco.app/ja/docs/tutorials/integrate-login/
+    credentials: true,
+    withCredentials: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
