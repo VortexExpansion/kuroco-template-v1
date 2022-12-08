@@ -1,10 +1,10 @@
 <template>
   <div>
-    <header class="p-header">
+    <header class="p-header" :class="{ 'is-open':Drawer }">
       <div class="p-header__inner l-header">
         <h1 class="p-header__logo"><nuxt-link to="/"><img
               src="https://rcms-template-v1.r-cms.jp/files/user/images/logo.svg?v=1516164532" alt="RCMS テンプレート"></nuxt-link></h1>
-        <div class="icon-animation type-1" data-js="nav-menu">
+        <div @click='(Drawer=!Drawer)' class="icon-animation type-1" data-js="nav-menu">
           <span class="top"></span>
           <span class="middle"></span>
           <span class="bottom"></span>
@@ -56,6 +56,12 @@
   </div>
 </template>
 
-<style>
-
-</style>
+<script>
+export default {
+  data() {
+    return {
+      Drawer: false,
+    };
+  },
+};
+</script>
