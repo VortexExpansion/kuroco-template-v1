@@ -3,11 +3,11 @@
     <section class="l-container--contents">
       <div class="c-slider flexslider" data-js="flexslider">
 
-        <div class="flex-viewport" >
+        <div class="flex-viewport">
           <ul class="c-slider__inner slides">
-            <li v-for="n in response_visual.list" :key="n.topics_id" class="flex-active-slide">
+            <li v-for="(n,i) in response_visual.list" :key="i" :class="{ 'flex-active-slide': i === activeItem}">
               <div class="pc">
-                <div class="c-slider__item clone" >
+                <div class="c-slider__item clone">
                   <picture>
                     <img :src="n.ext_1.url" alt="" draggable="false">
                   </picture>
@@ -24,8 +24,8 @@
           </ul>
         </div>
         <ol class="flex-control-nav flex-control-paging">
-          <li v-for="i in response_visual.pageInfo.totalCnt" :key="i">
-            <a href="#" class="flex-active">{{ i }}</a>
+          <li v-for="(n,i) in response_visual.pageInfo.totalCnt" :key="i" >
+            <a @click="selectItem(i)" href="#" :class="{ 'flex-active': i === activeItem}">{{ i }}</a>
           </li>
         </ol>
       </div>
@@ -33,7 +33,7 @@
 
     <section class="l-container--middle l-container--contents t-article-list p-top-topics__list">
       <ul class="c-topics__list">
-        <li v-for="n in response.list" :key="n.topics_id" class="c-topics__item">
+        <li v-for="(n, i) in response.list" :key="n.topics_id" class="c-topics__item">
           <time class="c-topics__date" :datetime=n.ymd>{{ n.ymd }}</time>
           <div class="c-topics__label">
             {{ n.contents_type_nm }}
@@ -89,6 +89,16 @@
 
 <script>
 export default {
+  data() {
+    return {
+      activeItem: 0,
+    };
+  },
+  methods: {
+    selectItem(i) {
+      this.activeItem = i;
+    },
+  },
   async asyncData({ $axios }) {
     return {
       response: await $axios.$get('/rcms-api/1/news/list', { params: { cnt: 3 } }),
@@ -100,7 +110,7 @@ export default {
 
 <style>
 li.flex-active-slide {
-    display: block !important;
+  display: block !important;
 }
 
 @media all and (max-width: 768px) {
