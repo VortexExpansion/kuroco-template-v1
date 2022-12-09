@@ -10,10 +10,10 @@
           <span class="middle"></span>
           <span class="bottom"></span>
         </div>
-        <div v-if="(userName != NULL)">ようこそ{{ userName.name1 }}
+        <div v-if="(userName != null)">ようこそ{{ userName.name1 }}
           <div>会員ステータス={{user_status}}</div>
         </div>
-        <div v-else><nuxt-link to="login">ログイン</nuxt-link></div>
+        <div v-else><nuxt-link to="/login">ログイン</nuxt-link></div>
         <ul class="p-header__menu">
           <li class="p-header__menu__item active"><nuxt-link to="/">トップ</nuxt-link></li>
           <li class="p-header__menu__item"><nuxt-link to="/news/">ニュース</nuxt-link></li>
