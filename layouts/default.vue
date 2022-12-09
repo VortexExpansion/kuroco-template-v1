@@ -3,7 +3,7 @@
     <header class="p-header" :class="{ 'is-open': Drawer }">
       <div class="p-header__inner l-header">
         <h1 class="p-header__logo"><nuxt-link to="/"><img
-              src="https://rcms-template-v1.r-cms.jp/files/user/images/logo.svg?v=1516164532"
+              src="https://hasebetest-template-test-simple.g.kuroco-img.app/files/user/images/logo_wh.svg"
               alt="RCMS テンプレート"></nuxt-link></h1>
         <div @click='(Drawer = !Drawer)' class="icon-animation type-1" data-js="nav-menu">
           <span class="top"></span>
@@ -11,7 +11,8 @@
           <span class="bottom"></span>
         </div>
         <div v-if="(userName != null)">ようこそ{{ userName.name1 }}
-          <div>会員ステータス={{user_status}}</div>
+          <div>会員ステータス=</div>
+          <div>{{userName.group_ids}}</div>
         </div>
         <div v-else><nuxt-link to="/login">ログイン</nuxt-link></div>
         <ul class="p-header__menu">
@@ -30,7 +31,7 @@
         <div class="p-footer__menu">
           <div class="p-footer__menu__head">
             <nuxt-link to="/">
-              <img src="/files/user/images/logo_wh.svg?v=1516164532" alt="RCMS テンプレート">
+              <img src="https://hasebetest-template-test-simple.g.kuroco-img.app/files/user/images/logo_wh.svg" alt="RCMS テンプレート">
             </nuxt-link>
           </div>
           <div class="p-footer__menu__body">
@@ -68,13 +69,13 @@ export default {
   data() {
     return {
       Drawer: false,
-      user_status:"通常会員"
+      user_status: "通常会員"
     };
   },
   computed: {
     userName() {
-        return this.$store.state.profile
-      }
+      return this.$store.state.profile
+    },
   }
 };
 </script>
