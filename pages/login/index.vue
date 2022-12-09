@@ -8,6 +8,8 @@
       <input v-model="email" name="email" type="email" placeholder="email" />
       <input v-model="password" name="password" type="password" placeholder="password" />
       <button type="submit">ログイン</button>
+      <nuxt-link to="/login/regist">新規会員登録はこちら</nuxt-link>
+      <nuxt-link to="/login/reminder">パスワードを忘れた方はこちら</nuxt-link>
 
     </form>
   </div>
