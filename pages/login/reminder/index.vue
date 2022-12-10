@@ -53,20 +53,25 @@ export default {
                 this.resultMessage = error.response.data.errors[0].message
             }
         },
-        //パスワードリセットのメール送信
+        //パスワードリセットの実行
         async resetpassSubmit2() {
-            try {
-                const payload = {
-                    token: this.$route.query.token,
-                    temp_pwd: this.temp_pass,
-                    login_pwd: this.new_pass
+            if (this.new_pass != this.confirm_pass) {
+                this.resultMessage = "確認用パスワードが一致していません"
+            }
+            else {
+                try {
+                    const payload = {
+                        token: this.$route.query.token,
+                        temp_pwd: this.temp_pass,
+                        login_pwd: this.new_pass
+                    }
+                    // post data
+                    const response = await this.$axios.$post(
+                        `/rcms-api/1/reminder`, payload)
+                    this.resultMessage = response.messages[0]
+                } catch (error) {
+                    this.resultMessage = error.response.data.errors[0].message
                 }
-                // post data
-                const response = await this.$axios.$post(
-                    `/rcms-api/1/reminder`, payload)
-                this.resultMessage = response.messages[0]
-            } catch (error) {
-                this.resultMessage = error.response.data.errors[0].message
             }
         }
     }
