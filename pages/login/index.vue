@@ -45,7 +45,7 @@ export default {
           email: this.email,
           password: this.password,
         };
-        await this.$store.dispatch('login', payload);
+        await this.$auth.loginWith('local', { data: payload });
 
         this.loginStatus = 'success';
         this.resultMessage = 'ログインに成功しました。';

@@ -10,9 +10,9 @@
           <span class="middle"></span>
           <span class="bottom"></span>
         </div>
-        <div v-if="(userName != null)">ようこそ{{ userName.name1 }}
-          <div>会員ステータス=</div>
-          <div>{{userName.group_ids}}</div>
+        <div v-if="$auth.loggedIn">ようこそ{{ userName.name1 }}
+          <div>会員ステータス={{ userName.group_ids }}</div>
+          <button type="button" @click="$auth.logout()">ログアウト</button>
         </div>
         <div v-else><nuxt-link to="/login">ログイン</nuxt-link></div>
         <ul class="p-header__menu">
@@ -31,7 +31,8 @@
         <div class="p-footer__menu">
           <div class="p-footer__menu__head">
             <nuxt-link to="/">
-              <img src="https://hasebetest-template-test-simple.g.kuroco-img.app/files/user/images/logo_wh.svg" alt="RCMS テンプレート">
+              <img src="https://hasebetest-template-test-simple.g.kuroco-img.app/files/user/images/logo_wh.svg"
+                alt="RCMS テンプレート">
             </nuxt-link>
           </div>
           <div class="p-footer__menu__body">
@@ -63,8 +64,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   data() {
     return {
@@ -74,7 +73,7 @@ export default {
   },
   computed: {
     userName() {
-      return this.$store.state.profile
+      return this.$auth.user
     },
   }
 };

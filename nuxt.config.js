@@ -1,7 +1,7 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-  
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -42,6 +42,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -51,6 +52,23 @@ export default {
     // クロスオリジンでのcookieを有効化 https://kuroco.app/ja/docs/tutorials/integrate-login/
     credentials: true,
     withCredentials: true
+  },
+
+  auth: {
+    localStorage: {
+      prefix: 'rcms_api.'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/rcms-api/1/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/rcms-api/1/logout', method: 'post' },
+          user: { url: '/rcms-api/1/profile', method: 'get', propertyName: false }
+        },
+        tokenRequired: false,
+        autoFetchUser: true
+      }
+    }
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
