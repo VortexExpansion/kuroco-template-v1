@@ -11,7 +11,7 @@
           <span class="bottom"></span>
         </div>
         <div v-if="$auth.loggedIn">ようこそ{{ userName.name1 }}
-          <div>会員ステータス={{ userName.group_ids }}</div>
+          <div>会員ステータス={{ userStatus }}</div>
           <button type="button" @click="$auth.logout()">ログアウト</button>
         </div>
         <div v-else><nuxt-link to="/login">ログイン</nuxt-link></div>
@@ -75,6 +75,14 @@ export default {
     userName() {
       return this.$auth.user
     },
+    userStatus() {
+      if ("105" in this.$auth.user.group_ids) {
+        return this.$auth.user.group_ids['105']
+      }
+      else {
+        return this.$auth.user.group_ids['104']
+      }
+    }
   }
 };
 </script>
