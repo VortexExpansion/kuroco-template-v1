@@ -68,7 +68,6 @@ export default {
   data() {
     return {
       Drawer: false,
-      user_status: "通常会員"
     };
   },
   computed: {
