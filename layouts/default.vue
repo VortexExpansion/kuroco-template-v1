@@ -76,7 +76,7 @@ export default {
       return this.$auth.user
     },
     userStatus() {
-      if ("105" in this.$auth.user.group_ids) {
+      if ('105' in this.$auth.user.group_ids) {
         return this.$auth.user.group_ids['105']
       }
       else {
