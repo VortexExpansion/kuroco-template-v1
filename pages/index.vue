@@ -5,7 +5,7 @@
 
         <div class="flex-viewport">
           <ul class="c-slider__inner slides">
-            <li v-for="(n,i) in response_visual.list" :key="i" :class="{ 'flex-active-slide': i === activeItem}">
+            <li v-for="(n, i) in response_visual.list" :key="i" :class="{ 'flex-active-slide': i === activeItem }">
               <div class="pc">
                 <div class="c-slider__item clone">
                   <picture>
@@ -24,8 +24,8 @@
           </ul>
         </div>
         <ol class="flex-control-nav flex-control-paging">
-          <li v-for="(n,i) in response_visual.pageInfo.totalCnt" :key="i" >
-            <a @click="selectItem(i)" href="#" :class="{ 'flex-active': i === activeItem}">{{ i }}</a>
+          <li v-for="(n, i) in response_visual.pageInfo.totalCnt" :key="i">
+            <a @click="selectItem(i)" href="#" :class="{ 'flex-active': i === activeItem }">{{ i }}</a>
           </li>
         </ol>
       </div>
@@ -48,13 +48,12 @@
       </div>
     </section>
 
-    <!--RCMSでは自由HTMLで記載-->
+    <!--画像をKurocoFilesを使わずにNuxtのassetsから配信することも可能です。-->
     <section class="l-container--middle l-container--contents t-article-list">
       <ul class="c-topics__card__list">
         <li class="c-topics__card__item"><nuxt-link class="c-topics__card__link" to="/service/#service-01">
             <div class="c-topics__card__picture">
-              <img alt="dummy picture"
-                src="https://hasebetest-template-test-simple.g.kuroco-img.app/v=1234567890/files/user/images/600x400.png">
+              <img alt="dummy picture" src="@/assets/image/600x400.png">
             </div>
             <div class="c-topics__card__contents">
               <div class="c-topics__title">テキストが入ります。テキストが入ります。</div>
@@ -62,8 +61,7 @@
           </nuxt-link>
         </li>
         <li class="c-topics__card__item"><nuxt-link class="c-topics__card__link" to="/service/#service-02">
-            <div class="c-topics__card__picture"><img alt="dummy picture"
-                src="https://hasebetest-template-test-simple.g.kuroco-img.app/v=1234567890/files/user/images/600x400.png">
+            <div class="c-topics__card__picture"><img alt="dummy picture" src="@/assets/image/600x400.png">
             </div>
             <div class="c-topics__card__contents">
               <div class="c-topics__title">テキストが入ります。テキストが入ります。</div>
@@ -71,8 +69,7 @@
           </nuxt-link>
         </li>
         <li class="c-topics__card__item"><nuxt-link class="c-topics__card__link" to="/service/#service-03">
-            <div class="c-topics__card__picture"><img alt="dummy picture"
-                src="https://hasebetest-template-test-simple.g.kuroco-img.app/v=1234567890/files/user/images/600x400.png">
+            <div class="c-topics__card__picture"><img alt="dummy picture" src="@/assets/image/600x400.png">
             </div>
             <div class="c-topics__card__contents">
               <div class="c-topics__title">テキストが入ります。テキストが入ります。</div>
