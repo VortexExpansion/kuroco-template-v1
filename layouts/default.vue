@@ -13,6 +13,7 @@
         <div v-if="$auth.loggedIn">ようこそ{{ userName.name1 }}
           <div>会員ステータス={{ userStatus }}</div>
           <button type="button" @click="$auth.logout()">ログアウト</button>
+          <nuxt-link to="/profile">プロフィール</nuxt-link>
         </div>
         <div v-else><nuxt-link to="/login">ログイン</nuxt-link></div>
         <ul class="p-header__menu">
