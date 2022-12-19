@@ -12,7 +12,22 @@
     <section class="p-contact l-container--middle l-container--contents">
       <h1 class="c-heading--lv1">お問い合わせ</h1>
 
-      <form class="c-form">
+      <template v-if="submitted">
+        <div class="c-text c-text--align-center">
+          <div v-html="thanksText"></div>
+        </div>
+        <div class="c-button__outer">
+          <nuxt-link to="/" class="c-button--return icon-arrow-left">TOPページ</nuxt-link>
+        </div>
+      </template>
+
+      <div v-if="error" class="error">
+        <p v-for="(err, idx) in error" :key="idx">
+          {{ err }}
+        </p>
+      </div>
+
+      <form v-if="!submitted" class="c-form">
         <p class="c-text">{{ response.details.inquiry_info }}</p>
 
         <div class="c-form__inner c-table--dl p-contact__table">
@@ -23,7 +38,6 @@
               <dd>
                 <input class="c-form-input" v-model="submitData[n.key]" :name=n.key type="text">
               </dd>
-              <div>確認：{{ submitData[n.key] }}</div>
             </dl>
             <!--テキストエリア-->
             <dl v-if="n.type === 2" :key="n.key">
@@ -32,7 +46,6 @@
                 <textarea v-model="submitData[n.key]" class="c-form-input--textarea" rows="4" cols="60" :name=n.key
                   placeholder=""></textarea>
               </dd>
-              <div>確認：{{ submitData.body }}</div>
             </dl>
             <!--ラジオボタン-->
             <dl v-if="n.type === 3" :key="n.key">
@@ -48,7 +61,6 @@
                   </li>
                 </ul>
               </dd>
-              <div>確認：{{ submitData.ext_01 }}</div>
             </dl>
             <!--セレクトボックス-->
             <dl v-if="n.type === 4" :key="n.key">
@@ -60,7 +72,6 @@
                     {{ option.value }}</option>
                 </select>
               </dd>
-              <div>確認：{{ submitData.ext_02 }}</div>
             </dl>
             <!--チェックボックス-->
             <dl v-if="n.type === 5" :key="n.key">
@@ -74,7 +85,6 @@
                   </li>
                 </ul>
               </dd>
-              <div>確認：{{ submitData.ext_03 }}</div>
             </dl>
             <!--日付-->
             <dl v-if="n.type === 6" :key="n.key">
@@ -135,10 +145,6 @@
                   <option label="31" value="31">31</option>
                 </select><label>日</label>
               </dd>
-              <div>確認：{{ y }}</div>
-              <div>確認：{{ m }}</div>
-              <div>確認：{{ d }}</div>
-              <div>確認：{{ submitData.ext_04 }}</div>
             </dl>
             <!--画像ファイル-->
             <dl v-if="n.type === 7" :key="n.key">
@@ -148,7 +154,6 @@
                 <p></p>
                 <input type="file" :name=n.key @change="uploadFile($event, n.key)">
               </dd>
-              <div>確認：{{ submitData.ext_05 }}</div>
             </dl>
             <!--マトリックス-->
             <dl v-if="n.type === 10" :key="n.key">
@@ -173,7 +178,6 @@
                         }">
                       </td>
                     </tr>
-                    <div>確認：{{ submitData.ext_06 }}</div>
                   </tbody>
                 </table>
               </dd>
@@ -238,7 +242,8 @@ export default {
       y: null,
       m: null,
       d: null,
-      checked: null
+      checked: null,
+      thanksText: null,
     }
   },
   async asyncData({ $axios }) {
@@ -273,11 +278,13 @@ export default {
     },
     async handleOnSubmit() {
       try {
-        await this.$axios.$post(
+        const formresponse = await this.$axios.$post(
           '/rcms-api/1/inquiry/1',
           { ...this.submitData } // フォームの内容をリクエストボディとして適用
         )
-        this.submitted = true
+        this.error = null;
+        this.submitted = true;
+        this.thanksText = formresponse.messages[0];
       } catch (e) {
         console.error(e)
         this.error = e.response.data.errors
