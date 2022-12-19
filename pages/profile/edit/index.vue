@@ -18,11 +18,8 @@
                     <input v-model="user.email" name="email" type="text">
                 </div>
                 <div>
-                    <input type="radio" id="group_id[1]" value='104' v-model.number="user.group_id[0]" />
-                    <label for="group_id">通常会員</label>
-
-                    <input type="radio" id="group_id[2]" value='105' v-model.number="user.group_id[0]" />
-                    <label for="group_id">プレミアム会員</label>
+                    <label>会員種別</label>
+                    <div>{{ group }}</div>
                 </div>
 
                 <button type="submit">更新する</button>
@@ -46,8 +43,8 @@ export default {
                 name1: "",
                 name2: "",
                 email: "",
-                group_id: [104],
             },
+            group:"通常会員",
             error: null
         }
     },
@@ -61,9 +58,8 @@ export default {
         this.user.name2 = this.response.details.name2;
         this.user.email = this.response.details.email;
         if ('105' in this.$auth.user.group_ids) {
-            this.user.group_id[0] = 105;
+            this.group = "プレミアム会員";
         }
-
     },
     methods: {
         async updateProfile() {
@@ -72,6 +68,7 @@ export default {
                     '/rcms-api/1/member/update',
                     { ...this.user } // フォームの内容をリクエストボディとして適用
                 )
+                this.$auth.fetchUser();
                 this.updateProfileDone = true
             } catch (e) {
                 console.error(e)

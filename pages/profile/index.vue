@@ -35,6 +35,9 @@
                 <button type="button" @click="(Popup = false)">やっぱりやめる。</button>
             </div>
         </div>
+        <div v-if="groupUpdate">
+            会員情報の更新が完了しました。
+        </div>
 
         <nuxt-link to="/profile/delete">退会はこちら</nuxt-link>
     </div>
@@ -47,6 +50,7 @@ export default {
     data() {
         return {
             Popup: false,
+            groupUpdate: false,
         };
     },
     async asyncData({ $axios }) {
@@ -57,6 +61,9 @@ export default {
     methods: {
         async updateStatus(status) {
             await this.$axios.$post('/rcms-api/1/member/update', { "group_id": [status] })
+            this.$auth.fetchUser();
+            this.Popup = false;
+            this.groupUpdate = true;
         }
     },
     computed: {
