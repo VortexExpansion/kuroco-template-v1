@@ -10,7 +10,7 @@
           <span class="middle"></span>
           <span class="bottom"></span>
         </div>
-        <div v-if="$auth.loggedIn">ようこそ{{ userName.name1 }}
+        <div v-if="userName.member_id != null">ようこそ{{ userName.name1 }}
           <div>会員ステータス={{ userStatus }}</div>
           <button type="button" @click="$auth.logout()">ログアウト</button>
           <nuxt-link to="/profile">プロフィール</nuxt-link>
