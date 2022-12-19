@@ -39,7 +39,7 @@
             会員情報の更新が完了しました。
         </div>
 
-        <nuxt-link to="/profile/delete">退会はこちら</nuxt-link>
+        <nuxt-link to="/delete">退会はこちら</nuxt-link>
     </div>
 </template>
 
