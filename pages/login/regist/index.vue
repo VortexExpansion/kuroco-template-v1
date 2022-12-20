@@ -54,7 +54,7 @@ export default {
                     '/rcms-api/1/member/register',
                     { ...this.user } // フォームの内容をリクエストボディとして適用
                 )
-
+                this.$auth.fetchUser();
                 this.signupDone = true
             } catch (e) {
                 console.error(e)
