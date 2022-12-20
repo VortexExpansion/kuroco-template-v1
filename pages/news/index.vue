@@ -33,23 +33,24 @@
         <nav class="l-side">
           <h2 class="c-heading--lv2">アーカイブ</h2>
           <ul class="c-list--link">
-            <li><nuxt-link to="/news/?filter=ymd%20%3E%3D%3Arelatively%20%222022-11-1%22%20AND%20ymd%20%3C%3Arelatively%20%222022-11-30%22" @click.native="$nuxt.refresh"><i
-                  class="c-link__icon c-list__icon -front fas fa-caret-right"></i>2018年2月 (1)</nuxt-link></li>
-            <li><a href="https://rcms-template-v1.r-cms.jp/news/date=2018-1"><i
-                  class="c-link__icon c-list__icon -front fas fa-caret-right"></i>2018年1月 (2)</a></li>
+            <li v-for="(n,i) in master.list" :key=i>
+              <nuxt-link :to="`/news/?filter=ymd%20%3E%3D%3Arelatively%20%22${n.Year}-${n.Month}-1%22%20AND%20ymd%20%3C%3Arelatively%20%22${n.Year}-${Number(n.Month)+1}-1%22`">
+                <i class="c-link__icon c-list__icon -front fas fa-caret-right"></i>{{n.Year}}年{{n.Month}}月 ({{ n.Count }})</nuxt-link>
+            </li>
           </ul>
         </nav>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  async asyncData({ $axios }) {
+  watchQuery: ['filter'],
+  async asyncData({ $axios, query }) {
     return {
-      response: await $axios.$get('/rcms-api/1/news/list'),
+      response: await $axios.$get('/rcms-api/1/news/list',{params:{filter:query.filter}}),
+      master: await $axios.$get('/rcms-api/1/master'),
     };
   },
 };
