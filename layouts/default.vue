@@ -21,6 +21,7 @@
           <li class="p-header__menu__item"><nuxt-link to="/news/">ニュース</nuxt-link></li>
           <li class="p-header__menu__item"><nuxt-link to="/service/">事業内容</nuxt-link></li>
           <li class="p-header__menu__item"><nuxt-link to="/company/">企業情報</nuxt-link></li>
+          <li class="p-header__menu__item"><nuxt-link to="/ltd-news/">限定記事</nuxt-link></li>
           <li class="p-header__menu__item"><nuxt-link to="/contact/">お問い合わせ</nuxt-link></li>
         </ul>
       </div>
