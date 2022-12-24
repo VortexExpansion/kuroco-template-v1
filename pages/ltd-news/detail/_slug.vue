@@ -1,11 +1,12 @@
 <template>
   <div class="l-container--wrap">
+
     <nav class="l-breadcrumb is-pc">
       <div class="l-container--middle">
         <ul>
           <li><nuxt-link to="/">トップ</nuxt-link></li>
-          <li><nuxt-link to="/news/">ニュース</nuxt-link></li>
-          <li></li>
+          <li><nuxt-link to="/news/">限定記事</nuxt-link></li>
+          <li v-if="response != null">{{ response.details.subject }}</li>
         </ul>
       </div>
     </nav>
