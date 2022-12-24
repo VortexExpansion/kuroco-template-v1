@@ -3,8 +3,10 @@
     <nav class="l-breadcrumb is-pc">
       <div class="l-container--middle">
         <ul>
-          <li><nuxt-link to="/">トップ</nuxt-link></li>
-          <li>ご挨拶</li>
+          <li>
+            <nuxt-link to="/">トップ</nuxt-link>
+          </li>
+          <li>{{ response.details.subject }}</li>
         </ul>
       </div>
     </nav>
