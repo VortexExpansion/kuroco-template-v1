@@ -15,6 +15,7 @@
           <h1 class="c-heading--lv1">ニュース</h1>
           <ul class="c-topics__list p-news__list">
 
+            <div v-if="response.pageInfo.totalCnt==0">記事が存在しません</div>
             <li v-for="n in response.list" :key="n.topics_id" class="c-topics__item">
               <time class="c-topics__date" :datetime=n.ymd>{{n.ymd}}</time>
               <div class="c-topics__label">
