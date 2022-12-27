@@ -33,7 +33,7 @@
         <nav class="l-side">
           <h2 class="c-heading--lv2">アーカイブ</h2>
           <ul class="c-list--link">
-            <li v-for="(n,i) in master.list" :key=i>
+            <li v-for="(n,i) in reverseItems" :key=i>
               <nuxt-link :to="`/news/?filter=ymd%20%3E%3D%3Arelatively%20%22${n.Year}-${n.Month}-1%22%20AND%20ymd%20%3C%3Arelatively%20%22${n.Year}-${Number(n.Month)+1}-1%22`">
                 <i class="c-link__icon c-list__icon -front fas fa-caret-right"></i>{{n.Year}}年{{n.Month}}月 ({{ n.Count }})</nuxt-link>
             </li>
@@ -52,6 +52,11 @@ export default {
       response: await $axios.$get('/rcms-api/1/news/list',{params:{filter:query.filter}}),
       master: await $axios.$get('/rcms-api/1/master'),
     };
+  },
+  computed: {
+    reverseItems() {
+      return this.master.list.slice().reverse();
+    },
   },
 };
 </script>
