@@ -40,33 +40,13 @@
 export default {
   async asyncData({ $axios, params }) {
     const profileRes = await $axios.$get('/rcms-api/1/profile')
-    if (profileRes.member_id != null) {
-      if ('105' in profileRes.group_ids) {
-        return {
-          response: await $axios.$get(`/rcms-api/1/ltd-news/details/105/${params.slug}`),
-          profileRes: profileRes
-        }
-      }
-      else {
-        try {
-          const response = await $axios.$get(`/rcms-api/1/ltd-news/details/104/${params.slug}`)
-          return { response, profileRes }
-        }
-        catch (error) {
-          console.log(error.message);
-          return { error, profileRes }
-        }
-      }
+    try {
+      const response = await $axios.$get(`/rcms-api/1/ltd-news/details/${params.slug}`)
+      return { response, profileRes }
     }
-    else {
-      try {
-        const response = await $axios.$get(`/rcms-api/1/ltd-news/details/public/${params.slug}`)
-        return { response, profileRes }
-      }
-      catch (error) {
-        console.log(error.message);
-        return { error, profileRes }
-      }
+    catch (error) {
+      console.log(error.message);
+      return { error, profileRes }
     }
   },
 };

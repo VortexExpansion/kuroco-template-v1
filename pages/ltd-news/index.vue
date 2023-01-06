@@ -23,7 +23,7 @@
           </div>
 
           <div class="parent">
-            <div v-for="n in response.list" :key="n.topics_id" class="tile">
+            <div v-for="n in response.data.list" :key="n.topics_id" class="tile">
               <nuxt-link :to="`/ltd-news/detail/${n.topics_id}`">
                 <div>
                   <div>
