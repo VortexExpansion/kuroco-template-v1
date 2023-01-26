@@ -23,7 +23,7 @@
             <button type="button" @click="(Popup = true)">プレミアム会員にアップデートする</button>
             <div v-if="Popup">
                 <div>プレミアム会員にアップデートします。<br>よろしいですか？</div>
-                <button type="button" @click="updateStatus(105)">はい。</button>
+                <button type="button" @click="updateStatus('1')">はい。</button>
                 <button type="button" @click="(Popup = false)">やっぱりやめる。</button>
             </div>
         </div>
@@ -31,12 +31,12 @@
             <button type="button" @click="(Popup = true)">通常会員にもどる</button>
             <div v-if="Popup">
                 <div>通常会員にもどります<br>よろしいですか？</div>
-                <button type="button" @click="updateStatus(104)">はい。</button>
+                <button type="button" @click="updateStatus('2')">はい。</button>
                 <button type="button" @click="(Popup = false)">やっぱりやめる。</button>
             </div>
         </div>
         <div v-if="groupUpdate">
-            会員情報の更新が完了しました。
+            申請を受け付けました。メールをご確認ください。
         </div>
 
         <nuxt-link to="/delete">退会はこちら</nuxt-link>
@@ -46,9 +46,9 @@
 <script>
 export default {
     middleware: 'auth',
-
     data() {
         return {
+            error: null,
             Popup: false,
             groupUpdate: false,
         };
@@ -60,10 +60,22 @@ export default {
     },
     methods: {
         async updateStatus(status) {
-            await this.$axios.$post('/rcms-api/1/member/update', { "group_id": [status] })
-            this.$auth.fetchUser();
-            this.Popup = false;
-            this.groupUpdate = true;
+            try {
+                const formresponse = await this.$axios.$post(
+                    '/rcms-api/1/inquiry/3',
+                    {
+                        "name": this.response.details.name1 + ' ' + this.response.details.name2,
+                        "email": this.response.details.email,
+                        "ext_01": status
+                    }
+                )
+                this.error = null;
+                this.Popup = false;
+                this.groupUpdate = true;
+            } catch (e) {
+                console.error(e)
+                this.error = e.response.data.errors
+            }
         }
     },
     computed: {
