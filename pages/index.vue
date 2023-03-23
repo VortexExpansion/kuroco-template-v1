@@ -81,6 +81,7 @@
       <div class="u-flex-horizon-center"><nuxt-link class="c-button icon-arrow-right" to="/service/">一覧へ</nuxt-link>
       </div>
     </section>
+    <KurocoChat />
   </div>
 </template>
 
