@@ -155,7 +155,7 @@
                 <input type="file" :name=n.key @change="uploadFile($event, n.key)">
               </dd>
             </dl>
-            <!--マトリックス-->
+            <!--マトリックス(単一選択)-->
             <dl v-if="n.type === 10" :key="n.key">
               <dt>{{ n.title }}<span v-if="n.required === 2" class="c-form-required">（必須）</span></dt>
               <dd>
@@ -252,9 +252,10 @@ export default {
     };
   },
   created() {
-    this.response.details.cols.forEach((object) => {
+    Object.keys(this.response.details.cols).forEach((key) => {
+      let object = this.response.details.cols[key];
       if (object.type === 5 || object.type === 10) {
-        this.$set(this.submitData, object.key, [])
+        this.$set(this.submitData, object.key, []);
       }
     })
   },
