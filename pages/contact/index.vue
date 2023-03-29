@@ -156,7 +156,7 @@
               </dd>
             </dl>
             <!--マトリックス(単一選択)-->
-            <dl v-if="n.type === 10" :key="n.key">
+            <dl v-if="n.type === 10 && n.attribute.selection_type === 'single'" :key="n.key">
               <dt>{{ n.title }}<span v-if="n.required === 2" class="c-form-required">（必須）</span></dt>
               <dd>
                 <table class="matrix_input">
@@ -176,6 +176,28 @@
                             key: i_col
                           }
                         }">
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </dd>
+            </dl>
+            <!--マトリックス(複数選択)-->
+            <dl v-if="n.type === 10 && n.attribute.selection_type === 'multiple'" :key="n.key">
+              <dt>{{ n.title }}<span v-if="n.required === 2" class="c-form-required">（必須）</span></dt>
+              <dd>
+                <table class="matrix_input">
+                  <tbody>
+                    <tr>
+                      <th></th>
+                      <th v-for="(options_col, i_col) in n.options[0].value" :key="i_col">{{ options_col }}</th>
+                    </tr>
+                    <tr v-for="(options_row, i_row) in n.options[1].value" :key="i_row">
+                      <th>{{ options_row }}</th>
+                      <td v-for="(options_col, i_col) in n.options[0].value" :key="i_col">
+                        <input type="checkbox" :id=i_col v-model="submitData[n.key][i_row-1].COL" :value="{
+                          key: i_col
+                        }" class="c-form-toggle__checkbox">
                       </td>
                     </tr>
                   </tbody>
@@ -252,11 +274,29 @@ export default {
     };
   },
   created() {
+    //配列形式が必要なタイプは事前に宣言
     Object.keys(this.response.details.cols).forEach((key) => {
       let object = this.response.details.cols[key];
+
+      //複数選択チェックボックスとマトリックスは配列形式でセット
       if (object.type === 5 || object.type === 10) {
         this.$set(this.submitData, object.key, []);
       }
+
+      //マトリックスの複数選択チェックボックスは列の数だけオブジェクトを追加し、"COL"は配列形式でセット
+      if (object.type === 10 && object.attribute.selection_type === 'multiple') {
+        Object.keys(object.options[1].value).forEach((key) => {
+          this.submitData[object.key].push(
+            {
+              "ROW": {
+                "key": key
+              },
+              "COL": []
+            }
+          );
+        })
+      }
+
     })
   },
   methods: {
