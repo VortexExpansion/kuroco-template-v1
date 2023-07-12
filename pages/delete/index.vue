@@ -3,7 +3,7 @@
         <div v-if="!deleteDone">
             <div>メンバー情報を完全に削除します。よろしいですか。</div>
 
-            <button type="submit"><nuxt-link to="/profile/">戻る</nuxt-link></button>
+            <button type="submit"><NuxtLink to="/profile/">戻る</NuxtLink></button>
             <button @click.prevent="deleteProfile">削除する</button>
         </div>
         <div v-if="deleteDone">

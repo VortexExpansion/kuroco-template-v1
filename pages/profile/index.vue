@@ -17,7 +17,7 @@
                 </li>
             </ul>
         </div>
-        <nuxt-link to="/profile/edit">会員情報を更新する</nuxt-link>
+        <NuxtLink to="/profile/edit">会員情報を更新する</NuxtLink>
 
         <div v-if="!('105' in this.$auth.user.group_ids)">
             <button type="button" @click="(Popup = true)">プレミアム会員にアップデートする</button>
@@ -39,7 +39,7 @@
             申請を受け付けました。メールをご確認ください。
         </div>
 
-        <nuxt-link to="/delete">退会はこちら</nuxt-link>
+        <NuxtLink to="/delete">退会はこちら</NuxtLink>
     </div>
 </template>
 

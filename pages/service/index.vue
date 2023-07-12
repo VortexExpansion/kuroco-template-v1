@@ -4,7 +4,7 @@
       <div class="l-container--middle">
         <ul>
           <li>
-            <nuxt-link to="/">トップ</nuxt-link>
+            <NuxtLink to="/">トップ</NuxtLink>
           </li>
           <li>{{ response.details.subject }}</li>
         </ul>

@@ -17,7 +17,7 @@
           <div v-html="thanksText"></div>
         </div>
         <div class="c-button__outer">
-          <nuxt-link to="/" class="c-button--return icon-arrow-left">TOPページ</nuxt-link>
+          <NuxtLink to="/" class="c-button--return icon-arrow-left">TOPページ</NuxtLink>
         </div>
       </template>
 

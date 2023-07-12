@@ -4,8 +4,8 @@
     <nav class="l-breadcrumb is-pc">
       <div class="l-container--middle">
         <ul>
-          <li><nuxt-link to="/">トップ</nuxt-link></li>
-          <li><nuxt-link to="/news/">限定記事</nuxt-link></li>
+          <li><NuxtLink to="/">トップ</NuxtLink></li>
+          <li><NuxtLink to="/news/">限定記事</NuxtLink></li>
           <li v-if="response != null">{{ response.details.subject }}</li>
         </ul>
       </div>
@@ -21,7 +21,7 @@
           </div>
           <div v-html="response.details.contents"></div>
           <div class="p-newsDetail__foot">
-            <nuxt-link to="/ltd-news/" class="c-button--return icon-arrow-left">限定記事一覧へ戻る</nuxt-link>
+            <NuxtLink to="/ltd-news/" class="c-button--return icon-arrow-left">限定記事一覧へ戻る</NuxtLink>
           </div>
         </article>
       </div>

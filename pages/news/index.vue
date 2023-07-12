@@ -3,7 +3,7 @@
     <nav class="l-breadcrumb is-pc">
       <div class="l-container--middle">
         <ul>
-          <li><nuxt-link to="/">トップ</nuxt-link></li>
+          <li><NuxtLink to="/">トップ</NuxtLink></li>
           <li>ニュース</li>
         </ul>
       </div>
@@ -22,7 +22,7 @@
                 {{n.contents_type_nm}}
               </div>
               <div class="c-topics__title">
-                <nuxt-link :to="`/news/detail/${n.topics_id}`">{{n.subject}}</nuxt-link>
+                <NuxtLink :to="`/news/detail/${n.topics_id}`">{{n.subject}}</NuxtLink>
               </div>
             </li>
 
@@ -35,8 +35,8 @@
           <h2 class="c-heading--lv2">アーカイブ</h2>
           <ul class="c-list--link">
             <li v-for="(n,i) in reverseItems" :key=i>
-              <nuxt-link :to="`/news/?filter=${n.Filter}`">
-                <i class="c-link__icon c-list__icon -front fas fa-caret-right"></i>{{n.Year}}年{{n.Month}}月 ({{ n.Count }})</nuxt-link>
+              <NuxtLink :to="`/news/?filter=${n.Filter}`">
+                <i class="c-link__icon c-list__icon -front fas fa-caret-right"></i>{{n.Year}}年{{n.Month}}月 ({{ n.Count }})</NuxtLink>
             </li>
           </ul>
         </nav>

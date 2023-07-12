@@ -39,7 +39,7 @@
             {{ n.contents_type_nm }}
           </div>
           <div class="c-topics__title">
-            <nuxt-link :to="`/news/detail/${n.topics_id}`">{{ n.subject }}</nuxt-link>
+            <NuxtLink :to="`/news/detail/${n.topics_id}`">{{ n.subject }}</NuxtLink>
           </div>
         </li>
       </ul>
@@ -51,34 +51,34 @@
     <!--画像をKurocoFilesを使わずにNuxtのassetsから配信することも可能です。-->
     <section class="l-container--middle l-container--contents t-article-list">
       <ul class="c-topics__card__list">
-        <li class="c-topics__card__item"><nuxt-link class="c-topics__card__link" to="/service/#service-01">
+        <li class="c-topics__card__item"><NuxtLink class="c-topics__card__link" to="/service/#service-01">
             <div class="c-topics__card__picture">
               <img alt="dummy picture" src="@/assets/image/600x400.png">
             </div>
             <div class="c-topics__card__contents">
               <div class="c-topics__title">テキストが入ります。テキストが入ります。</div>
             </div>
-          </nuxt-link>
+          </NuxtLink>
         </li>
-        <li class="c-topics__card__item"><nuxt-link class="c-topics__card__link" to="/service/#service-02">
+        <li class="c-topics__card__item"><NuxtLink class="c-topics__card__link" to="/service/#service-02">
             <div class="c-topics__card__picture"><img alt="dummy picture" src="@/assets/image/600x400.png">
             </div>
             <div class="c-topics__card__contents">
               <div class="c-topics__title">テキストが入ります。テキストが入ります。</div>
             </div>
-          </nuxt-link>
+          </NuxtLink>
         </li>
-        <li class="c-topics__card__item"><nuxt-link class="c-topics__card__link" to="/service/#service-03">
+        <li class="c-topics__card__item"><NuxtLink class="c-topics__card__link" to="/service/#service-03">
             <div class="c-topics__card__picture"><img alt="dummy picture" src="@/assets/image/600x400.png">
             </div>
             <div class="c-topics__card__contents">
               <div class="c-topics__title">テキストが入ります。テキストが入ります。</div>
             </div>
-          </nuxt-link>
+          </NuxtLink>
         </li>
       </ul>
 
-      <div class="u-flex-horizon-center"><nuxt-link class="c-button icon-arrow-right" to="/service/">一覧へ</nuxt-link>
+      <div class="u-flex-horizon-center"><NuxtLink class="c-button icon-arrow-right" to="/service/">一覧へ</NuxtLink>
       </div>
     </section>
     <KurocoChat />

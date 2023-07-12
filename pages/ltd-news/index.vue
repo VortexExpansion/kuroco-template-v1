@@ -3,7 +3,7 @@
     <nav class="l-breadcrumb is-pc">
       <div class="l-container--middle">
         <ul>
-          <li><nuxt-link to="/">トップ</nuxt-link></li>
+          <li><NuxtLink to="/">トップ</NuxtLink></li>
           <li>限定記事</li>
         </ul>
       </div>
@@ -16,15 +16,15 @@
 
           <div>このページは会員ステータスによって表示される記事が異なるように設計されています。</div>
           <div v-if="group == null">
-            <nuxt-link to="/login/regist">新規会員登録はこちら</nuxt-link>
+            <NuxtLink to="/login/regist">新規会員登録はこちら</NuxtLink>
           </div>
           <div v-if="group == 104">
-            プレミアム会員へのステータス変更は<nuxt-link to="/profile/">こちら</nuxt-link>
+            プレミアム会員へのステータス変更は<NuxtLink to="/profile/">こちら</NuxtLink>
           </div>
 
           <div class="parent">
             <div v-for="n in response.data.list" :key="n.topics_id" class="tile">
-              <nuxt-link :to="`/ltd-news/detail/${n.topics_id}`">
+              <NuxtLink :to="`/ltd-news/detail/${n.topics_id}`">
                 <div>
                   <div>
                     <img width="300" height="195" :src="`${n.ext_1.url}?width=300&height=195`" class="img" alt="">
@@ -37,7 +37,7 @@
                   <div>{{ n.subject }}</div>
                 </div>
                 <!-- .textbox -->
-              </nuxt-link>
+              </NuxtLink>
             </div>
           </div>
 
