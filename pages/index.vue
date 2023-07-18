@@ -1,7 +1,7 @@
 <template>
   <div>
-    <UiMainSlider v-if="mainVisual" v-bind="mainVisual" />
-    <NewsList v-if="news" v-bind="news" />
+    <UiMainSlider v-bind="mainVisual" />
+    <NewsList v-bind="news" />
     <UiCardContainer
       v-if="cards && cards.length"
       :cards="cards"
