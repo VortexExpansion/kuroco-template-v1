@@ -50,7 +50,7 @@
 export default {
   data() {
     return {
-      subject: 'ニュース',
+      subject: "ニュース",
     };
   },
   watchQuery: ["filter"],

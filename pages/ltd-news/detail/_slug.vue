@@ -9,11 +9,9 @@
       <div class="l-container--main">
         <article class="c-article p-newsDetail">
           <div class="p-newsDetail__head">
-            <time
-              class="p-newsDetail__head__date"
-              :datetime="details.ymd"
-              >{{ details.ymd }}</time
-            >
+            <time class="p-newsDetail__head__date" :datetime="details.ymd">{{
+              details.ymd
+            }}</time>
             <div class="p-newsDetail__head__label">
               {{ details.contents_type_nm }}
             </div>
@@ -41,9 +39,7 @@
 export default {
   data() {
     return {
-      path: [
-        { label: '限定記事', to: '/ltd-news' },
-      ],
+      path: [{ label: "限定記事", to: "/ltd-news" }],
     };
   },
   async asyncData({ $axios, params }) {

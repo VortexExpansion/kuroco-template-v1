@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       group: null,
-      subject: '限定記事',
+      subject: "限定記事",
     };
   },
   created() {

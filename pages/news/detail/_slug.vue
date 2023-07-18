@@ -6,11 +6,9 @@
       <div class="l-container--main">
         <article class="c-article p-newsDetail">
           <div class="p-newsDetail__head">
-            <time
-              class="p-newsDetail__head__date"
-              :datetime="details.ymd"
-              >{{ details.ymd }}</time
-            >
+            <time class="p-newsDetail__head__date" :datetime="details.ymd">{{
+              details.ymd
+            }}</time>
             <div class="p-newsDetail__head__label">
               {{ details.contents_type_nm }}
             </div>
@@ -52,13 +50,13 @@
 export default {
   data() {
     return {
-      path: [
-        { label: 'ニュース', to: '/news' },
-      ],
+      path: [{ label: "ニュース", to: "/news" }],
     };
   },
   async asyncData({ $axios, params }) {
-    const response = await $axios.$get(`/rcms-api/1/news/details/${params.slug}`);
+    const response = await $axios.$get(
+      `/rcms-api/1/news/details/${params.slug}`
+    );
     return {
       details: response.details,
       master: await $axios.$get("/rcms-api/1/master"),
