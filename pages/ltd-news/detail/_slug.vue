@@ -1,17 +1,9 @@
 <template>
   <div class="l-container--wrap">
-    <nav class="l-breadcrumb is-pc">
-      <div class="l-container--middle">
-        <ul>
-          <li><NuxtLink to="/">トップ</NuxtLink></li>
-          <li><NuxtLink to="/news/">限定記事</NuxtLink></li>
-          <li v-if="response != null">{{ response.details.subject }}</li>
-        </ul>
-      </div>
-    </nav>
+    <UiNavLink :path="path" :subject="details.subject" />
 
     <div
-      v-if="response != null"
+      v-if="details != null"
       class="l-container--middle l-container--contents"
     >
       <div class="l-container--main">
@@ -19,17 +11,17 @@
           <div class="p-newsDetail__head">
             <time
               class="p-newsDetail__head__date"
-              :datetime="response.details.ymd"
-              >{{ response.details.ymd }}</time
+              :datetime="details.ymd"
+              >{{ details.ymd }}</time
             >
             <div class="p-newsDetail__head__label">
-              {{ response.details.contents_type_nm }}
+              {{ details.contents_type_nm }}
             </div>
             <h1 class="c-heading--lv1 p-newsDetail__head__heading">
-              {{ response.details.subject }}
+              {{ details.subject }}
             </h1>
           </div>
-          <div v-html="response.details.contents"></div>
+          <div v-html="details.contents"></div>
           <div class="p-newsDetail__foot">
             <NuxtLink to="/ltd-news/" class="c-button--return icon-arrow-left"
               >限定記事一覧へ戻る</NuxtLink
@@ -47,13 +39,20 @@
 
 <script>
 export default {
+  data() {
+    return {
+      path: [
+        { label: '限定記事', to: '/ltd-news' },
+      ],
+    };
+  },
   async asyncData({ $axios, params }) {
     const profileRes = await $axios.$get("/rcms-api/1/profile");
     try {
-      const response = await $axios.$get(
+      const { details } = await $axios.$get(
         `/rcms-api/1/ltd-news/details/${params.slug}`
       );
-      return { response, profileRes };
+      return { details, profileRes };
     } catch (error) {
       console.log(error.message);
       return { error, profileRes };

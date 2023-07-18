@@ -1,14 +1,6 @@
 <template>
   <div class="l-container--wrap">
-    <nav class="l-breadcrumb is-pc">
-      <div class="l-container--middle">
-        <ul>
-          <li><NuxtLink to="/">トップ</NuxtLink></li>
-          <li><NuxtLink to="/news/">ニュース</NuxtLink></li>
-          <li>{{ response.details.subject }}</li>
-        </ul>
-      </div>
-    </nav>
+    <UiNavLink :path="path" :subject="details.subject" />
 
     <div class="l-container--middle l-container--contents">
       <div class="l-container--main">
@@ -16,18 +8,18 @@
           <div class="p-newsDetail__head">
             <time
               class="p-newsDetail__head__date"
-              :datetime="response.details.ymd"
-              >{{ response.details.ymd }}</time
+              :datetime="details.ymd"
+              >{{ details.ymd }}</time
             >
             <div class="p-newsDetail__head__label">
-              {{ response.details.contents_type_nm }}
+              {{ details.contents_type_nm }}
             </div>
             <h1 class="c-heading--lv1 p-newsDetail__head__heading">
-              {{ response.details.subject }}
+              {{ details.subject }}
             </h1>
           </div>
 
-          <div v-html="response.details.contents"></div>
+          <div v-html="details.contents"></div>
 
           <div class="p-newsDetail__foot">
             <NuxtLink to="/news/" class="c-button--return icon-arrow-left"
@@ -58,9 +50,17 @@
 
 <script>
 export default {
-  async asyncData({ $axios, params }) {
+  data() {
     return {
-      response: await $axios.$get(`/rcms-api/1/news/details/${params.slug}`),
+      path: [
+        { label: 'ニュース', to: '/news' },
+      ],
+    };
+  },
+  async asyncData({ $axios, params }) {
+    const response = await $axios.$get(`/rcms-api/1/news/details/${params.slug}`);
+    return {
+      details: response.details,
       master: await $axios.$get("/rcms-api/1/master"),
     };
   },

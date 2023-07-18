@@ -1,13 +1,6 @@
 <template>
   <div class="l-container--wrap">
-    <nav class="l-breadcrumb is-pc">
-      <div class="l-container--middle">
-        <ul>
-          <li><NuxtLink to="/">トップ</NuxtLink></li>
-          <li>限定記事</li>
-        </ul>
-      </div>
-    </nav>
+    <UiNavLink :subject="subject" />
 
     <div class="l-container--middle l-container--contents">
       <div class="l-container--main">
@@ -65,6 +58,7 @@ export default {
   data() {
     return {
       group: null,
+      subject: '限定記事',
     };
   },
   created() {

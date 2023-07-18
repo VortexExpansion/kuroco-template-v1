@@ -1,5 +1,8 @@
 <template>
-  <Content v-bind="details" />
+  <div class="l-container--wrap">
+    <UiNavLink v-bind="details" />
+    <UiPlainContent v-bind="details" />
+  </div>
 </template>
 
 <script>

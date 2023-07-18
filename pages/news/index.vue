@@ -1,18 +1,11 @@
 <template>
   <div class="l-container--wrap">
-    <nav class="l-breadcrumb is-pc">
-      <div class="l-container--middle">
-        <ul>
-          <li><NuxtLink to="/">トップ</NuxtLink></li>
-          <li>ニュース</li>
-        </ul>
-      </div>
-    </nav>
+    <UiNavLink :subject="subject" />
 
     <div class="l-container--middle l-container--contents">
       <div class="l-container--main">
         <section class="p-news">
-          <h1 class="c-heading--lv1">ニュース</h1>
+          <h1 class="c-heading--lv1">{{ subject }}</h1>
           <ul class="c-topics__list p-news__list">
             <div v-if="response.pageInfo.totalCnt == 0">記事が存在しません</div>
             <li
@@ -55,6 +48,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      subject: 'ニュース',
+    };
+  },
   watchQuery: ["filter"],
   async asyncData({ $axios, query }) {
     return {
