@@ -59,16 +59,15 @@ export default {
   },
   computed: {
     userName() {
-      return this.$auth.user
+      return this.$auth.user;
     },
     userStatus() {
-      if ('105' in this.$auth.user.group_ids) {
-        return this.$auth.user.group_ids['105']
+      if ("105" in this.$auth.user.group_ids) {
+        return this.$auth.user.group_ids["105"];
+      } else {
+        return this.$auth.user.group_ids["104"];
       }
-      else {
-        return this.$auth.user.group_ids['104']
-      }
-    }
-  }
+    },
+  },
 };
 </script>

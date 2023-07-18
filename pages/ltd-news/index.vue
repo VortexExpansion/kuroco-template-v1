@@ -14,20 +14,34 @@
         <section class="p-news">
           <h1 class="c-heading--lv1">限定記事</h1>
 
-          <div>このページは会員ステータスによって表示される記事が異なるように設計されています。</div>
+          <div>
+            このページは会員ステータスによって表示される記事が異なるように設計されています。
+          </div>
           <div v-if="group == null">
             <NuxtLink to="/login/regist">新規会員登録はこちら</NuxtLink>
           </div>
           <div v-if="group == 104">
-            プレミアム会員へのステータス変更は<NuxtLink to="/profile/">こちら</NuxtLink>
+            プレミアム会員へのステータス変更は<NuxtLink to="/profile/"
+              >こちら</NuxtLink
+            >
           </div>
 
           <div class="parent">
-            <div v-for="n in response.data.list" :key="n.topics_id" class="tile">
+            <div
+              v-for="n in response.data.list"
+              :key="n.topics_id"
+              class="tile"
+            >
               <NuxtLink :to="`/ltd-news/detail/${n.topics_id}`">
                 <div>
                   <div>
-                    <img width="300" height="195" :src="`${n.ext_1.url}?width=300&height=195`" class="img" alt="">
+                    <img
+                      width="300"
+                      height="195"
+                      :src="`${n.ext_1.url}?width=300&height=195`"
+                      class="img"
+                      alt=""
+                    />
                   </div>
                   <div>{{ n.contents_type_nm }}</div>
                 </div>
@@ -40,10 +54,8 @@
               </NuxtLink>
             </div>
           </div>
-
         </section>
       </div>
-
     </div>
   </div>
 </template>
@@ -53,21 +65,20 @@ export default {
   data() {
     return {
       group: null,
-    }
+    };
   },
   created() {
     if (this.$auth.user.member_id != null) {
-      if ('105' in this.$auth.user.group_ids) {
+      if ("105" in this.$auth.user.group_ids) {
         this.group = 105;
-      }
-      else if ('104' in this.$auth.user.group_ids) {
+      } else if ("104" in this.$auth.user.group_ids) {
         this.group = 104;
       }
     }
   },
   async asyncData({ $axios }) {
     return {
-      response: await $axios.$get('/rcms-api/1/ltd-news/list'),
+      response: await $axios.$get("/rcms-api/1/ltd-news/list"),
     };
   },
 };

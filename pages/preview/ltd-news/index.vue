@@ -14,18 +14,27 @@
       <div class="l-container--main">
         <article class="c-article p-newsDetail">
           <div class="p-newsDetail__head">
-            <time class="p-newsDetail__head__date" :datetime=response.details.ymd>{{ response.details.ymd }}</time>
-            <div class="p-newsDetail__head__label">{{ response.details.contents_type_nm }}</div>
-            <h1 class="c-heading--lv1 p-newsDetail__head__heading">{{ response.details.subject }}</h1>
+            <time
+              class="p-newsDetail__head__date"
+              :datetime="response.details.ymd"
+              >{{ response.details.ymd }}</time
+            >
+            <div class="p-newsDetail__head__label">
+              {{ response.details.contents_type_nm }}
+            </div>
+            <h1 class="c-heading--lv1 p-newsDetail__head__heading">
+              {{ response.details.subject }}
+            </h1>
           </div>
           <div v-html="response.details.contents"></div>
           <div class="p-newsDetail__foot">
-            <NuxtLink to="/ltd-news/" class="c-button--return icon-arrow-left">限定記事一覧へ戻る</NuxtLink>
+            <NuxtLink to="/ltd-news/" class="c-button--return icon-arrow-left"
+              >限定記事一覧へ戻る</NuxtLink
+            >
           </div>
         </article>
       </div>
     </div>
-
   </div>
 </template>
 
