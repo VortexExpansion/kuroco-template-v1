@@ -1,7 +1,7 @@
 <template>
   <div class="l-container--wrap">
     <UiNavLink v-bind="details" />
-    <UiPlainContent v-bind="details" />
+    <ContentPlainBody v-bind="details" />
   </div>
 </template>
 

@@ -1,7 +1,6 @@
 <template>
   <div class="l-container--wrap">
     <UiNavLink :subject="subject" />
-
     <div class="l-container--middle l-container--contents">
       <div class="l-container--main">
         <section class="p-news">
@@ -58,20 +57,3 @@ export default {
   },
 };
 </script>
-
-<style>
-.parent {
-  display: flex;
-  flex-wrap: wrap;
-  width: 800px;
-}
-
-.img {
-  width: 100%;
-}
-
-.tile {
-  width: 30%;
-  padding: 20px;
-}
-</style>
