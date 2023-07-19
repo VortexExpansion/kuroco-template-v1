@@ -18,17 +18,17 @@ export default {
       cards: [
         {
           href: "/service/#service-01",
-          imageUrl: "~assets/image/600x400.png",
+          imageUrl: "_nuxt/assets/image/600x400.png",
           text: "テキストが入ります。テキストが入ります。",
         },
         {
           href: "/service/#service-02",
-          imageUrl: "~assets/image/600x400.png",
+          imageUrl: "_nuxt/assets/image/600x400.png",
           text: "テキストが入ります。テキストが入ります。",
         },
         {
           href: "/service/#service-03",
-          imageUrl: "~assets/image/600x400.png",
+          imageUrl: "_nuxt/assets/image/600x400.png",
           text: "テキストが入ります。テキストが入ります。",
         },
       ],

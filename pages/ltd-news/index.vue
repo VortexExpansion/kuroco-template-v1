@@ -18,35 +18,7 @@
               >こちら</NuxtLink
             >
           </div>
-
-          <div class="parent">
-            <div
-              v-for="n in response.data.list"
-              :key="n.topics_id"
-              class="tile"
-            >
-              <NuxtLink :to="`/ltd-news/detail/${n.topics_id}`">
-                <div>
-                  <div>
-                    <img
-                      width="300"
-                      height="195"
-                      :src="`${n.ext_1.url}?width=300&height=195`"
-                      class="img"
-                      alt=""
-                    />
-                  </div>
-                  <div>{{ n.contents_type_nm }}</div>
-                </div>
-                <!-- .img_wrap -->
-                <div>
-                  <div>{{ n.ymd }}</div>
-                  <div>{{ n.subject }}</div>
-                </div>
-                <!-- .textbox -->
-              </NuxtLink>
-            </div>
-          </div>
+          <UiCardContainer :cards="cards"></UiCardContainer>
         </section>
       </div>
     </div>
@@ -59,7 +31,15 @@ export default {
     return {
       group: null,
       subject: "限定記事",
+      cards: [],
     };
+  },
+  mounted() {
+    this.cards = this.newsList.map((news) => ({
+      href: `/ltd-news/detail/${news.topics_id}`,
+      imageUrl: `${news.ext_1.url}?width=300&height=195`,
+      text: `${news.contents_type_nm}\n${news.ymd}\n${news.subject}`,
+    }));
   },
   created() {
     if (this.$auth.user.member_id != null) {
@@ -71,8 +51,9 @@ export default {
     }
   },
   async asyncData({ $axios }) {
+    const response = await $axios.$get("/rcms-api/1/ltd-news/list");
     return {
-      response: await $axios.$get("/rcms-api/1/ltd-news/list"),
+      newsList: response.data.list,
     };
   },
 };
