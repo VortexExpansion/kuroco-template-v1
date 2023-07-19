@@ -3,7 +3,7 @@
     <UiNavLink :subject="subject" />
     <div class="l-container--middle l-container--contents">
       <NewsList :subject="subject" v-bind="news" />
-      <ContentSideBar :reverseItems="reverseItems" />
+      <ContentSideBar :itemList="reverseItems" />
     </div>
   </div>
 </template>

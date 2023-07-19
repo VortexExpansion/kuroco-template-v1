@@ -1,24 +1,7 @@
 <template>
   <div class="l-container--wrap">
-    <nav class="l-breadcrumb is-pc">
-      <div class="l-container--middle">
-        <ul>
-          <li>
-            <NuxtLink to="/">トップ</NuxtLink>
-          </li>
-          <li>{{ response.details.subject }}</li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="l-container--middle l-container--contents">
-      <article>
-        <div class="topics_contents">
-          <div v-html="response.details.contents"></div>
-          <div class="clr"></div>
-        </div>
-      </article>
-    </div>
+    <UiNavLink v-bind="response.details" />
+    <ContentPlainBody v-bind="response.details" />
   </div>
 </template>
 

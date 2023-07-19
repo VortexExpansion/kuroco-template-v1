@@ -3,7 +3,7 @@
     <UiNavLink :path="path" :subject="details.subject" />
     <div class="l-container--middle l-container--contents">
       <ContentDetailBody :details="details" :button="button" />
-      <ContentSideBar :reverseItems="reverseItems" />
+      <ContentSideBar :itemList="reverseItems" />
     </div>
   </div>
 </template>
