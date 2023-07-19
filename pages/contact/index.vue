@@ -1,16 +1,9 @@
 <template>
-  <div>
-    <nav class="l-breadcrumb is-pc">
-      <div class="l-container--middle">
-        <ul>
-          <li><a href="https://rcms-template-v1.r-cms.jp/">トップ</a></li>
-          <li>お問い合わせ</li>
-        </ul>
-      </div>
-    </nav>
+  <div class="l-container--wrap">
+    <UiNavLink :subject="subject" />
 
     <section class="p-contact l-container--middle l-container--contents">
-      <h1 class="c-heading--lv1">お問い合わせ</h1>
+      <h1 class="c-heading--lv1">{{ subject }}</h1>
 
       <template v-if="submitted">
         <div class="c-text c-text--align-center">
@@ -428,6 +421,7 @@ export default {
       d: null,
       checked: null,
       thanksText: null,
+      subject: "お問い合わせ",
     };
   },
   async asyncData({ $axios }) {

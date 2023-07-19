@@ -1,10 +1,11 @@
 <template>
   <div>
     <UiMainSlider v-bind="mainVisual" />
-    <NewsList v-bind="news" />
+    <NewsList :homePage="homePage" v-bind="news" />
     <UiCardContainer
       v-if="cards && cards.length"
       :cards="cards"
+      :homePage="homePage"
     ></UiCardContainer>
     <KurocoChat />
   </div>
@@ -31,6 +32,7 @@ export default {
           text: "テキストが入ります。テキストが入ります。",
         },
       ],
+      homePage: true,
     };
   },
   async asyncData({ $axios }) {

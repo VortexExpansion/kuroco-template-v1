@@ -1,8 +1,14 @@
 <template>
   <section
-    class="l-container--middle l-container--contents t-article-list p-top-topics__list"
+    class="l-container--middle l-container--contents"
+    :class="{
+      'l-container--main p-news': !homePage,
+      't-article-list p-top-topics__list ': homePage,
+    }"
   >
+    <h1 v-if="subject" class="c-heading--lv1">{{ subject }}</h1>
     <ul class="c-topics__list">
+      <div v-if="!homePage && list.length == 0">記事が存在しません</div>
       <li v-for="news in list" :key="news.topics_id" class="c-topics__item">
         <time class="c-topics__date" :datetime="news.ymd">{{ news.ymd }}</time>
         <div class="c-topics__label">
@@ -15,18 +21,29 @@
         </div>
       </li>
     </ul>
-    <div class="u-flex-horizon-center">
-      <NuxtLink class="c-button icon-arrow-right" to="/news/">一覧へ</NuxtLink>
-    </div>
+    <UiButton v-if="homePage" :button="button" />
   </section>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      button: [{ label: "一覧へ", to: "/news/" }],
+    };
+  },
   props: {
     list: {
       type: Array,
       required: true,
+    },
+    homePage: {
+      type: Boolean,
+      required: false,
+    },
+    subject: {
+      type: String,
+      required: false,
     },
   },
 };
