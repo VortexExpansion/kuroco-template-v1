@@ -1,10 +1,10 @@
 <template>
   <section
-    class="l-container--middle l-container--contents"
-    :class="{
-      'l-container--main p-news': !homePage,
-      't-article-list p-top-topics__list ': homePage,
-    }"
+    :class="[
+      'l-container--middle',
+      'l-container--contents',
+      homePage ? 't-article-list p-top-topics__list' : 'l-container--main p-news',
+    ]"
   >
     <h1 v-if="subject" class="c-heading--lv1">{{ subject }}</h1>
     <ul class="c-topics__list">

@@ -3,10 +3,11 @@
     <NuxtLink
       v-for="item in button"
       :key="item.label"
-      class="c-button icon-arrow-right"
+      :class="[
+        item.type === 'back' ? 'c-button--return icon-arrow-left' : 'c-button icon-arrow-right',
+      ]"
       :to="item.to"
-      >{{ item.label }}</NuxtLink
-    >
+    >{{ item.label }}</NuxtLink>
   </div>
 </template>
 

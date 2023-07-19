@@ -20,11 +20,7 @@
             </h1>
           </div>
           <div v-html="details.contents"></div>
-          <div class="p-newsDetail__foot">
-            <NuxtLink to="/ltd-news/" class="c-button--return icon-arrow-left"
-              >限定記事一覧へ戻る</NuxtLink
-            >
-          </div>
+          <UiButton class="p-newsDetail__foot" :button="button" />
         </article>
       </div>
     </div>
@@ -39,7 +35,8 @@
 export default {
   data() {
     return {
-      path: [{ label: "限定記事", to: "/ltd-news" }],
+      path: [{ label: "限定記事", to: "/ltd-news/" }],
+      button: [{ type: "back", label: "限定記事一覧へ戻る", to: "/ltd-news/" }],
     };
   },
   async asyncData({ $axios, params }) {
