@@ -8476,6 +8476,10 @@ category:
     flex: 2 1 auto;
 }
 
+.c-topics__space {
+    white-space: pre-line;
+}
+
 /*
 ---
 name: TopicsList

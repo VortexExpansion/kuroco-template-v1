@@ -6,11 +6,15 @@
       </p>
 
       <input v-model="email" name="email" type="email" placeholder="email" />
-      <input v-model="password" name="password" type="password" placeholder="password" />
+      <input
+        v-model="password"
+        name="password"
+        type="password"
+        placeholder="password"
+      />
       <button type="submit">ログイン</button>
-      <nuxt-link to="/login/regist">新規会員登録はこちら</nuxt-link>
-      <nuxt-link to="/login/reminder">パスワードを忘れた方はこちら</nuxt-link>
-
+      <NuxtLink to="/login/regist">新規会員登録はこちら</NuxtLink>
+      <NuxtLink to="/login/reminder">パスワードを忘れた方はこちら</NuxtLink>
     </form>
   </div>
 </template>
@@ -19,8 +23,8 @@
 export default {
   data() {
     return {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
 
       loginStatus: null,
       resultMessage: null,
@@ -29,12 +33,12 @@ export default {
   computed: {
     resultMessageColor() {
       switch (this.loginStatus) {
-        case 'success':
-          return 'green';
-        case 'failure':
-          return 'red';
+        case "success":
+          return "green";
+        case "failure":
+          return "red";
         default:
-          return '';
+          return "";
       }
     },
   },
@@ -45,13 +49,13 @@ export default {
           email: this.email,
           password: this.password,
         };
-        await this.$auth.loginWith('local', { data: payload });
+        await this.$auth.loginWith("local", { data: payload });
 
-        this.loginStatus = 'success';
-        this.resultMessage = 'ログインに成功しました。';
+        this.loginStatus = "success";
+        this.resultMessage = "ログインに成功しました。";
       } catch (e) {
-        this.loginStatus = 'failure';
-        this.resultMessage = 'ログインに失敗しました。';
+        this.loginStatus = "failure";
+        this.resultMessage = "ログインに失敗しました。";
       }
     },
   },
