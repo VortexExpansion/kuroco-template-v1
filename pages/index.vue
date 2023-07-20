@@ -12,23 +12,24 @@
 </template>
 
 <script>
+import dummyImage from '~/assets/image/600x400.png';
 export default {
   data() {
     return {
       cards: [
         {
           href: "/service/#service-01",
-          imageUrl: "_nuxt/assets/image/600x400.png",
+          imageUrl: dummyImage,
           text: "テキストが入ります。テキストが入ります。",
         },
         {
           href: "/service/#service-02",
-          imageUrl: "_nuxt/assets/image/600x400.png",
+          imageUrl: dummyImage,
           text: "テキストが入ります。テキストが入ります。",
         },
         {
           href: "/service/#service-03",
-          imageUrl: "_nuxt/assets/image/600x400.png",
+          imageUrl: dummyImage,
           text: "テキストが入ります。テキストが入ります。",
         },
       ],
