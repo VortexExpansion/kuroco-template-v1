@@ -1,0 +1,35 @@
+.l-footer {
+  padding: calc( var(--spacing) * 2) 0;
+  background-color: $c_sub4;
+  color: var(--color-white);
+  &__nav {
+    @include pc() {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        a {
+          display: block;
+          padding: calc( var(--spacing) / 2 );
+          color: $c_white;
+          font-size: .9em;
+          text-decoration: none;
+          transition: var(--transition-seconds) color;
+          &:hover {
+            color: var(--color-primary);
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+  &__copyright {
+    margin: 0;
+    padding-top: var(--spacing);
+    font-size: .75em;
+  }
+}

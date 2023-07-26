@@ -1,0 +1,122 @@
+.p-service {
+  @at-root {
+    &__head {
+      margin: 0;
+      text-align: center;
+      @include pc() {
+        padding-bottom: 30px;
+      }
+      @include sp() {
+        padding-bottom: 15px;
+      }
+    }
+    &__heading {
+      &--lv1 {
+        margin-bottom: 0 !important;
+        line-height: 1.2;
+        letter-spacing: .1em;
+        @include pc() {
+          @include fz(40);
+        }
+        @include sp() {
+          @include fz(28);
+        }
+      }
+      &--lv2 {
+        color: $c_sub2;
+        text-align: center;
+        letter-spacing: .05em;
+        @include pc() {
+          padding: 0 0 20px;
+          @include fz(28);
+        }
+        @include sp() {
+          padding: 0 0 10px;
+          @include fz(22);
+        }
+      }
+      &--lv3 {
+        margin: 20px 0;
+        color: var(--color-primary);
+        letter-spacing: .05em;
+        @include pc() {
+          @include fz(22);
+        }
+        @include sp() {
+          @include fz(18);
+        }
+      }
+    }
+    &__inner {
+      padding: 60px 0;
+      border-top: 1px solid $c_sub1;
+      @include pc() {
+        padding: 60px 0;
+      }
+      @include sp() {
+        padding: 30px 15px;
+      }
+    }
+    &__item {
+      width: 100%;
+      display: flex;
+      @include pc() {
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 50px;
+      }
+      @include sp() {
+        flex-direction: column;
+        margin-top: 25px;
+      }
+      &:not(:first-of-type) {
+        border-top: 1px solid $c_sub1;
+        @include pc() {
+          padding-top: 50px;
+        }
+        @include sp() {
+          padding-top: 25px;
+        }
+      }
+      &__img {
+        @include pc() {
+          width: 40%;
+        }
+        @include sp() {
+          order: 1;
+        }
+        img {
+          max-width: 100%;
+        }
+      }
+      &__text {
+        @include pc() {
+          width: 55%;
+        }
+        @include sp() {
+          order: 2;
+        }
+        .c-button {
+          margin-top: 10px;
+        }
+      }
+    }
+    &__card__list {
+      @include pc() {
+        margin-top: 50px;
+      }
+      @include sp() {
+        margin-top: 25px;
+      }
+      a {
+        @include pc() {
+          @include fz(18);
+        }
+        @include sp() {
+          @include fz(16);
+        }
+      }
+    }
+
+  }
+}

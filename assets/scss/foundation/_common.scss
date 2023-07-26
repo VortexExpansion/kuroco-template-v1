@@ -1,0 +1,87 @@
+/********************************************
+		Common
+********************************************/
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+dd,
+dl,
+dt,
+label,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic", "MS UI Gothic", Helvetica, Arial;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+img {
+  vertical-align: top;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  color: var(--color-base);
+  font-size: var(--font-size-base);
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic", "MS UI Gothic", Helvetica, Arial;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: var(--color-base);
+  font-size: var(--font-size-base);
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic", "MS UI Gothic", Helvetica, Arial;
+}
+::placeholder { color: #aaa; }
+
+button,
+input[type="button"],
+input[type="submit"] {
+  border: none;
+}
+
+iframe {
+  vertical-align: top;
+}

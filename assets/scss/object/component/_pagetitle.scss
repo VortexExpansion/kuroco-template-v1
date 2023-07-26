@@ -1,0 +1,12 @@
+.c-page-title {
+  padding: calc( var(--spacing) * 2) 0 calc( var(--spacing) * 3);
+  background-color: var(--color-light-gray);
+  &__heading {
+	font-size: var(--font-size-h1);
+	font-weight: bold;
+  }
+  &__date {
+	margin-top: var(--spacing);
+	font-size: .75rem;
+  }
+}

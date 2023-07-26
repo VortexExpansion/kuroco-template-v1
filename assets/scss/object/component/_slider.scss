@@ -1,0 +1,48 @@
+/*
+---
+name: Slider
+category:
+ - component/js/slider
+---
+
+```html sample
+<div class="c-slider flexslider" data-js="flexslider">
+  <ul class="c-slider__inner slides">
+    <li class="c-slider__item">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/files/user/images/flexslider/flexslider_01.jpg">
+        <img src="/files/user/images/flexslider/flexslider_01.jpg" alt="">
+      </picture>
+    </li>
+    <li class="c-slider__item">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/files/user/images/flexslider/flexslider_02.jpg">
+        <img src="/files/user/images/flexslider/flexslider_02.jpg" alt="">
+      </picture>
+    </li>
+    <li class="c-slider__item">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/files/user/images/flexslider/flexslider_03.jpg">
+        <img src="/files/user/images/flexslider/flexslider_03.jpg" alt="">
+      </picture>
+    </li>
+    <li class="c-slider__item">
+      <picture>
+        <source media="(max-width: 768px)" srcset="/files/user/images/flexslider/flexslider_04.jpg">
+        <img src="/files/user/images/flexslider/flexslider_04.jpg" alt="">
+      </picture>
+    </li>
+  </ul>
+</div>
+```
+*/
+.c-slider {
+  &__inner {
+    @include pc() {
+      display: flex;
+      align-items: center;
+      height: 400px;
+      overflow: hidden;
+    }
+  }
+}
