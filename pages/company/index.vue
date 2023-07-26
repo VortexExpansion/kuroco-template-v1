@@ -1,5 +1,5 @@
 <template>
-  <div class="l-container--wrap">
+  <div>
     <UiNavLink v-bind="details" />
     <ContentPlainBody v-bind="details" />
   </div>

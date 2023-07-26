@@ -1,5 +1,5 @@
 <template>
-  <div class="l-container--wrap">
+  <div class="l-container">
     <UiNavLink :subject="subject" />
 
     <section class="p-contact l-container--middle l-container--contents">

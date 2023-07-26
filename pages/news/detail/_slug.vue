@@ -1,10 +1,15 @@
 <template>
-  <div class="l-container--wrap">
+  <div class="l-container">
     <UiNavLink :path="path" :subject="details.subject" />
-    <div class="l-container--middle l-container--contents">
-      <ContentDetailBody :details="details" :button="button" />
-      <ContentSideBar :itemList="reverseItems" />
-    </div>
+    <section>
+      <Pagetitle :subject="details.subject" :ymd="details.ymd" />
+      <div class="l-container--col-2 l-container--contents">
+        <div class="l-container--col-2__main">
+          <ContentDetailBody :details="details" :button="button" />
+        </div>
+        <ContentSideBar :itemList="reverseItems" />
+      </div>
+    </section>
   </div>
 </template>
 
