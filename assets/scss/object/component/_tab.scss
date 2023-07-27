@@ -59,7 +59,7 @@ category:
     &__item {
       border: solid 1px var(--color-border);
       border-bottom: none;
-      background-color: $c_white;
+      background-color: var(--color-white);
       padding: 1em 2em;
       transition: 0.3s;
       cursor: pointer;
@@ -79,7 +79,7 @@ category:
     width: 600px;
     display: none;
     border: solid 1px var(--color-border);
-    background-color: $c_white;
+    background-color: var(--color-white);
     z-index: 0;
 
     &.is-active {

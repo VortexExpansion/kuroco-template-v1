@@ -24,7 +24,7 @@
         <div class="c-form-group">
           <button type="submit" class="c-button u-width-100">ログイン</button>
         </div>
-        <div class="u-text-align-center">
+        <div class="u-text-align-center u-mt-25">
           <NuxtLink to="/login/regist">会員登録</NuxtLink>
           または
           <NuxtLink to="/login/reminder">パスワードをお忘れの方</NuxtLink>

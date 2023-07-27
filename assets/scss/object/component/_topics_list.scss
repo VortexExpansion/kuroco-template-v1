@@ -32,7 +32,7 @@
 	&__title {
 		flex: 2 1 auto;
 		margin: 0;
-		transition: var(--transition-second) color;
+		transition: var(--transition-seconds) color;
 		@include sp() { padding-top: clac( var(--spacing) / 2 ); }
 	}
 }

@@ -60,40 +60,46 @@
           </NuxtLink>
         </div>
         <nav class="l-header__nav">
-          <div
+          <button
             @click="Drawer = !Drawer"
-            class="icon-animation type-1"
-            data-js="nav-menu"
+            type="button"
+            class="l-header__nav__toggle"
           >
-            <span class="top"></span>
-            <span class="middle"></span>
-            <span class="bottom"></span>
-          </div>
-          <ul class="l-header__nav__list">
-            <li class="l-header__nav__list__item">
-              <NuxtLink to="/company/">会社概要</NuxtLink>
-            </li>
-            <li class="l-header__nav__list__item">
-              <NuxtLink to="/service/">事業内容</NuxtLink>
-            </li>
-            <li class="l-header__nav__list__item">
-              <NuxtLink to="/news/">ニュース</NuxtLink>
-            </li>
-            <li class="l-header__nav__list__item">
-              <NuxtLink to="/ltd-news/">限定記事</NuxtLink>
-            </li>
-            <li class="l-header__nav__list__item">
-              <NuxtLink to="/contact/">お問い合わせ</NuxtLink>
-            </li>
-          </ul>
-          <div v-if="userName.member_id != null">
-            ようこそ{{ userName.name1 }}
-            <div>会員ステータス={{ userStatus }}</div>
-            <button type="button" @click="$auth.logout()">ログアウト</button>
-            <NuxtLink to="/profile">プロフィール</NuxtLink>
-          </div>
-          <div v-else>
-            <NuxtLink to="/login/" class="c-button">ログイン</NuxtLink>
+            <div class="l-header__nav__toggle__icon">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+          <div class="l-header__nav__inner">
+            <ul class="l-header__nav__list">
+              <li class="l-header__nav__list__item">
+                <NuxtLink to="/company/">会社概要</NuxtLink>
+              </li>
+              <li class="l-header__nav__list__item">
+                <NuxtLink to="/service/">事業内容</NuxtLink>
+              </li>
+              <li class="l-header__nav__list__item">
+                <NuxtLink to="/news/">ニュース</NuxtLink>
+              </li>
+              <li class="l-header__nav__list__item">
+                <NuxtLink to="/ltd-news/">限定記事</NuxtLink>
+              </li>
+              <li class="l-header__nav__list__item">
+                <NuxtLink to="/contact/">お問い合わせ</NuxtLink>
+              </li>
+            </ul>
+            <div class="l-header__nav__options">
+              <div v-if="userName.member_id != null">
+                ようこそ{{ userName.name1 }}
+                <div>会員ステータス={{ userStatus }}</div>
+                <button type="button" @click="$auth.logout()">ログアウト</button>
+                <NuxtLink to="/profile">プロフィール</NuxtLink>
+              </div>
+              <div v-else>
+                <NuxtLink to="/login/" class="c-button">ログイン</NuxtLink>
+              </div>
+            </div>
           </div>
         </nav>
       </div>

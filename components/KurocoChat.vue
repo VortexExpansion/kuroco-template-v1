@@ -72,7 +72,7 @@ export default {
   background-color: #fdd;
 }
 
-.is-open {
+#kuroco-chat .is-open {
   display: none;
 }
 </style>
