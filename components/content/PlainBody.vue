@@ -1,6 +1,6 @@
 <template>
   <article>
-    <Pagetitle :subject="contents.subject" />
+    <UiPagetitle :subject="subject" />
     <div class="l-container--middle l-container--contents">
       <div v-html="contents"></div>
     </div>
@@ -10,6 +10,10 @@
 <script>
 export default {
   props: {
+    subject: {
+      type: String,
+      required: true,
+    },
     contents: {
       type: String,
       required: true,

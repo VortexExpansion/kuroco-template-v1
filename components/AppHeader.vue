@@ -90,15 +90,23 @@
               </li>
             </ul>
             <div class="l-header__nav__options">
-              <div v-if="userName.member_id != null">
-                ようこそ{{ userName.name1 }}
-                <div>会員ステータス={{ userStatus }}</div>
-                <button type="button" @click="$auth.logout()">ログアウト</button>
-                <NuxtLink to="/profile">プロフィール</NuxtLink>
-              </div>
-              <div v-else>
+              <template v-if="userName.member_id != null">
+                <div class="c-text--small">
+                  <p class="u-ma-0">
+                    ようこそ！{{ userName.name1 }}さん
+                  </p>
+                  <div>
+                    会員ステータス<span>{{ userStatus }}</span>
+                  </div>
+                </div>
+                <NuxtLink to="/profile" class="c-button">プロフィール</NuxtLink>
+                <button type="button" @click="$auth.logout()" class="c-button">
+                  ログアウト
+                </button>
+              </template>
+              <template v-else>
                 <NuxtLink to="/login/" class="c-button">ログイン</NuxtLink>
-              </div>
+              </template>
             </div>
           </div>
         </nav>

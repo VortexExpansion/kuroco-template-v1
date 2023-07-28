@@ -93,15 +93,9 @@
         align-items: center;
       }
       &__item {
-        &:not(:last-child) {
-          @include sp() {
-            border-bottom: solid 1px var(--color-white);
-          }
-        }
         a {
           display: block;
           padding: var(--spacing);
-          text-decoration: none;
           @include sp() {
             padding: var(--spacing) var(--spacing-horizontal-sp);
             font-weight: bold;
@@ -111,6 +105,7 @@
     }
     &__options {
       @include sp() {
+        margin-top: var(--spacing);
         background-color: var(--color-dark-gray);
         padding: var(--spacing-horizontal-sp);
         color: var(--color-white);

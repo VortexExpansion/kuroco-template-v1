@@ -3,12 +3,16 @@
     <div class="l-container--small l-container--contents">
       <h1 class="c-heading--lv1 u-text-align-center">ログイン</h1>
       <form @submit.prevent="login">
-        <p v-if="loginStatus !== null" :style="{ color: resultMessageColor }">
-          {{ resultMessage }}
-        </p>
+        <UiAlertError v-if="error" :error="errorMessage" />
         <div class="c-form-group">
           <label for="email" class="c-form-label">メールアドレス</label>
-          <input v-model="email" name="email" type="email" id="email" class="c-form-input" placeholder="email" />
+          <input
+            v-model="email"
+            name="email"
+            type="email"
+            id="email"
+            class="c-form-input"
+          />
         </div>
         <div class="c-form-group">
           <label for="password" class="c-form-label">パスワード</label>
@@ -18,7 +22,6 @@
             type="password"
             id="password"
             class="c-form-input"
-            placeholder="password"
           />
         </div>
         <div class="c-form-group">
@@ -40,22 +43,13 @@ export default {
     return {
       email: "",
       password: "",
-
-      loginStatus: null,
-      resultMessage: null,
+      error: null,
+      errorMessage: [
+        {
+          message: "メールアドレスまたはパスワードが正しくありません。",
+        },
+      ],
     };
-  },
-  computed: {
-    resultMessageColor() {
-      switch (this.loginStatus) {
-        case "success":
-          return "green";
-        case "failure":
-          return "red";
-        default:
-          return "";
-      }
-    },
   },
   methods: {
     async login() {
@@ -65,12 +59,9 @@ export default {
           password: this.password,
         };
         await this.$auth.loginWith("local", { data: payload });
-
-        this.loginStatus = "success";
-        this.resultMessage = "ログインに成功しました。";
       } catch (e) {
-        this.loginStatus = "failure";
-        this.resultMessage = "ログインに失敗しました。";
+        console.error(e);
+        this.error = e.response.data.errors;
       }
     },
   },

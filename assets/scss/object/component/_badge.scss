@@ -1,0 +1,8 @@
+.c-badge {
+  padding: calc( var(--spacing) / 4 ) var(--spacing);
+  border-radius: var(--border-radius);
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  @include fz(12);
+  text-align: center;
+}

@@ -1,12 +1,18 @@
 .c-page-title {
-  padding: calc( var(--spacing) * 2) 0 calc( var(--spacing) * 3);
+  // position: relative;
+  // background: url("~/assets/image/pagetitle_bg.png") no-repeat center;
+  // background-size: 100%;
+  padding: var(--spacing-vertical-pc) 0;
   background-color: var(--color-light-gray);
   &__heading {
-	font-size: var(--font-size-h1);
-	font-weight: bold;
+    font-size: var(--font-size-h1);
+    font-weight: bold;
+    z-index: 10;
   }
   &__date {
-	margin-top: var(--spacing);
-	font-size: .75rem;
+    display: inline-block;
+    margin-top: calc(var(--spacing) * 2);
+    font-size: 0.75rem;
+    z-index: 10;
   }
 }

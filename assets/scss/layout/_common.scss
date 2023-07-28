@@ -80,12 +80,12 @@
     &__side {
       position: relative;
       @include pc() {
-        width: 220px;
+        flex: 0 0 220px;
         margin-left: var(--spacing-horizontal-pc);
       }
       @include sp() {
         width: 100%;
-        margin-top: calc(var(--spacing-vertical-sp);
+        margin-top: var(--spacing-vertical-sp);
       }
     }
   }

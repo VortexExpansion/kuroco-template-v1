@@ -2,7 +2,7 @@
   <div class="l-container">
     <UiNavLink :path="path" :subject="details.subject" />
     <section>
-      <Pagetitle :subject="details.subject" :ymd="details.ymd" />
+      <UiPagetitle :subject="details.subject" :ymd="details.ymd" />
       <div class="l-container--col-2 l-container--contents">
         <div class="l-container--col-2__main">
           <ContentDetailBody :details="details" :button="button" />

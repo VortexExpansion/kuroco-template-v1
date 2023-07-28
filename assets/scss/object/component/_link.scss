@@ -24,16 +24,22 @@ category:
 // }
 
 a {
-	color: var(--color-primary);
-	text-decoration: none;
-	&:hover { text-decoration: underline; }
+  color: var(--color-primary);
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .c-link__icon {
-	@include fz(16);
-	vertical-align: 0;
-	// リンクの前に配置
-	&.-front { margin-right: 3px; }
-	// リンクの後ろに配置
-	&.-rear { margin-left: 5px; }
+  @include fz(16);
+  vertical-align: 0;
+  // リンクの前に配置
+  &.-front {
+    margin-right: 3px;
+  }
+  // リンクの後ろに配置
+  &.-rear {
+    margin-left: 5px;
+  }
 }

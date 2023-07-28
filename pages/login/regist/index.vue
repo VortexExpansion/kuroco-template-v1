@@ -2,15 +2,17 @@
   <section>
     <div class="l-container--small l-container--contents">
       <h1 class="c-heading--lv1 u-text-align-center">会員登録</h1>
-      <div class="c-form-group u-text-align-center">
-        <p class="c-text--small"><span class="c-form-label__required">*</span>は必須項目です。</p>
-      </div>
-      <div v-if="!signupDone">
-        <form @submit.prevent="signup">
-          <p v-if="error" :style="{ color: 'red' }">
-            {{ error }}
+      <template v-if="signupDone">
+        <UiAlertSuccess :message="message" />
+      </template>
+      <template v-else>
+        <div class="c-form-group u-text-align-center">
+          <p class="c-text--small">
+            <span class="c-form-label__required">*</span>は必須項目です。
           </p>
-
+        </div>
+        <UiAlertError v-if="error" :error="error" />
+        <form @submit.prevent="signup">
           <div class="c-form-group">
             <label for="name1" class="c-form-label">名前（姓）</label>
             <span class="c-form-label__required">*</span>
@@ -59,17 +61,19 @@
             />
           </div>
           <div class="c-form-group">
-            <button type="submit" class="c-button u-width-100">
-              登録
-            </button>
+            <button type="submit" class="c-button u-width-100">登録</button>
           </div>
           <div class="c-form-group u-text-align-center">
             すでに会員の方は<NuxtLink to="/login">ログイン</NuxtLink>
           </div>
-          <p class="c-text--small u-mt-25">続行することで<NuxtLink to="#">利用規約</NuxtLink>及び<NuxtLink to="/privacy/">プライバシーポリシー</NuxtLink>に同意したこととなります。</p>
+          <p class="c-text--small u-mt-25">
+            続行することで<NuxtLink to="#">利用規約</NuxtLink>及び<NuxtLink
+              to="/privacy/"
+              >プライバシーポリシー</NuxtLink
+            >に同意したこととなります。
+          </p>
         </form>
-      </div>
-      <div v-else>新規登録が完了しました。</div>
+      </template>
     </div>
   </section>
 </template>
@@ -79,9 +83,9 @@ export default {
   data() {
     return {
       signupDone: false,
-
       user: {},
       error: null,
+      message: "登録が完了しました",
     };
   },
   methods: {
@@ -96,7 +100,7 @@ export default {
         this.signupDone = true;
       } catch (e) {
         console.error(e);
-        this.error = "エラーが発生しました。";
+        this.error = e.response.data.errors;
       }
     },
   },

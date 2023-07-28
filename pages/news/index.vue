@@ -2,7 +2,7 @@
   <div class="l-container">
     <UiNavLink :subject="subject" />
     <section>
-      <Pagetitle :subject="subject" />
+      <UiPagetitle :subject="subject" />
       <div class="l-container--col-2 l-container--contents">
         <div class="l-container--col-2__main">
           <NewsList :subject="subject" v-bind="news" />
