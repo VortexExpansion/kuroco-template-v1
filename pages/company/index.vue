@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UiNavLink v-bind="details" />
+    <UiNavLink v-bind="details.subject" />
     <ContentPlainBody v-bind="details" />
   </div>
 </template>

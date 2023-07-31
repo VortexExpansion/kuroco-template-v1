@@ -1,7 +1,7 @@
 <template>
   <div class="l-container--wrap">
     <UiNavLink :path="path" :subject="response.details.subject" />
-    <div class="l-container--middle l-container--contents">
+    <div class="l-container--large l-container--contents">
       <ContentDetailBody :details="response.details" :button="button" />
       <ContentSideBar :preview="preview" :itemList="master.list" />
     </div>

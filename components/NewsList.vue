@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ul class="c-topics-list">
-      <div v-if="!homePage && list.length == 0">記事が存在しません</div>
+    <p v-if="!homePage && list.length == 0">記事が存在しません</p>
+    <ul v-else class="c-topics-list">
       <li v-for="news in list" :key="news.topics_id">
         <NuxtLink :to="`/news/detail/${news.topics_id}`" class="c-topics">
           <time class="c-topics__date" :datetime="news.ymd">{{ news.ymd }}</time>

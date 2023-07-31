@@ -3,7 +3,7 @@
     <UiNavLink :path="path" :subject="details.subject" />
     <div
       v-if="details != null"
-      class="l-container--middle l-container--contents"
+      class="l-container--large l-container--contents"
     >
       <ContentDetailBody :details="details" :button="button" />
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <section class="l-container--middle l-container--contents t-article-list">
+  <section class="l-container--large l-container--contents t-article-list">
     <ul v-if="cards.length" class="c-topics__card__list">
       <UiCard v-for="card in cards" :key="card.href" v-bind="card" />
     </ul>

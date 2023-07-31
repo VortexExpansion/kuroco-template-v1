@@ -7,10 +7,6 @@
   @extend %heading;
   font-size: var(--font-size-h1);
 }
-.c-article h1 {
-  @extend .c-heading--lv1;
-}
-
 .c-heading--lv2 {
   @extend %heading;
   padding-bottom: calc( var(--spacing) / 2);
@@ -20,10 +16,6 @@
     margin-top: var(--spacing);
   }
 }
-.c-article h2 {
-  @extend .c-heading--lv2;
-}
-
 .c-heading--lv3 {
   @extend %heading;
   padding: calc( var(--spacing) / 2) calc( var(--spacing) / 2) calc( var(--spacing) / 2) var(--spacing) ;
@@ -34,17 +26,10 @@
     margin-top: var(--spacing);
   }
 }
-.c-article h3 {
-  @extend .c-heading--lv3;
-}
-
 .c-heading--lv4 {
   @extend %heading;
   font-size: var(--font-size-h4);
   &:not(:first-child) {
     margin-top: var(--spacing);
   }
-}
-.c-article h4 {
-  @extend .c-heading--lv4;
 }

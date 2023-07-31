@@ -1,7 +1,7 @@
 <template>
-  <article>
+  <article class="c-article">
     <UiPagetitle :subject="subject" />
-    <div class="l-container--middle l-container--contents">
+    <div class="l-container--large l-container--contents">
       <div v-html="contents"></div>
     </div>
   </article>

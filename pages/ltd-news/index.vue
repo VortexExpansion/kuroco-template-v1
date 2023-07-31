@@ -1,7 +1,7 @@
 <template>
   <div class="l-container--wrap">
     <UiNavLink :subject="subject" />
-    <div class="l-container--middle l-container--contents">
+    <div class="l-container--large l-container--contents">
       <div class="l-container--main">
         <section class="p-news">
           <h1 class="c-heading--lv1">限定記事</h1>

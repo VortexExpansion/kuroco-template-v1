@@ -3,8 +3,8 @@
     <div class="l-container--small l-container--contents">
       <h1 class="c-heading--lv1 u-text-align-center">パスワード再発行</h1>
       <template v-if="$route.query.token != null">
-        <form>
-          <h1>新しいパスワードを設定する</h1>
+        <h1>新しいパスワードを設定する</h1>
+        <form class="c-form">
           <p v-if="resultMessage !== null">
             {{ resultMessage }}
           </p>
@@ -58,7 +58,7 @@
         </form>
       </template>
       <template v-else>
-        <form>
+        <form class="c-form">
           <p>パスワードのリセット</p
           >
           <p v-if="resultMessage !== null">
@@ -71,7 +71,7 @@
               name="email"
               type="email"
               id="email"
-              class="c-form-input"
+              
             />
           </div>
           <div class="c-form-group">

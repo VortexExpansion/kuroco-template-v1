@@ -2,7 +2,7 @@
   <section>
     <div class="l-container--small l-container--contents">
       <h1 class="c-heading--lv1 u-text-align-center">ログイン</h1>
-      <form @submit.prevent="login">
+      <form @submit.prevent="login" class="c-form">
         <UiAlertError v-if="error" :error="errorMessage" />
         <div class="c-form-group">
           <label for="email" class="c-form-label">メールアドレス</label>
@@ -11,7 +11,7 @@
             name="email"
             type="email"
             id="email"
-            class="c-form-input"
+            
           />
         </div>
         <div class="c-form-group">
@@ -21,7 +21,7 @@
             name="password"
             type="password"
             id="password"
-            class="c-form-input"
+            
           />
         </div>
         <div class="c-form-group">

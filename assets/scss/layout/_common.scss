@@ -35,20 +35,6 @@
       padding-left: var(--spacing-horizontal-sp);
     }
   }
-  &--middle {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    @include pc() {
-      max-width: 1000px;
-      padding-right: var(--spacing-horizontal-pc);
-      padding-left: var(--spacing-horizontal-pc);
-    }
-    @include sp() {
-      padding-right: var(--spacing-horizontal-sp);
-      padding-left: var(--spacing-horizontal-sp);
-    }
-  }
   &--small {
     position: relative;
     width: 100%;
@@ -93,9 +79,15 @@
   &--contents {
     @include pc() {
       padding-top: var(--spacing-vertical-pc);
+      &:not(:last-of-type) {
+        padding-bottom: var(--spacing-vertical-pc);
+      }
     }
     @include sp() {
       padding-top: var(--spacing-vertical-sp);
+      &:not(:last-of-type) {
+        padding-bottom: var(--spacing-vertical-sp);
+      }
     }
   }
 }

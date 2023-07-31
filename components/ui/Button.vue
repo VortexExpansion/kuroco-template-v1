@@ -1,5 +1,5 @@
 <template>
-  <div class="u-flex-horizon-center">
+  <div>
     <NuxtLink
       v-for="item in button"
       :key="item.label"

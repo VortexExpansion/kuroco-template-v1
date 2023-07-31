@@ -12,37 +12,20 @@
           </p>
         </div>
         <UiAlertError v-if="error" :error="error" />
-        <form @submit.prevent="signup">
+        <form @submit.prevent="signup" class="c-form">
           <div class="c-form-group">
             <label for="name1" class="c-form-label">名前（姓）</label>
             <span class="c-form-label__required">*</span>
-            <input
-              v-model="user.name1"
-              name="name1"
-              type="text"
-              id="name1"
-              class="c-form-input"
-            />
+            <input v-model="user.name1" name="name1" type="text" id="name1" />
           </div>
           <div class="c-form-group">
             <label for="name2" class="c-form-label">名前（名）</label>
-            <input
-              v-model="user.name2"
-              name="name2"
-              type="text"
-              id="name2"
-              class="c-form-input"
-            />
+            <input v-model="user.name2" name="name2" type="text" id="name2" />
           </div>
           <div class="c-form-group">
             <label for="email" class="c-form-label">メールアドレス</label>
             <span class="c-form-label__required">*</span>
-            <input
-              v-model="user.email"
-              name="email"
-              type="email"
-              class="c-form-input"
-            />
+            <input v-model="user.email" name="email" type="email" />
           </div>
           <div class="c-form-group">
             <div class="u-display-flex">
@@ -57,7 +40,6 @@
               name="login_pwd"
               type="password"
               id="login_pwd"
-              class="c-form-input"
             />
           </div>
           <div class="c-form-group">

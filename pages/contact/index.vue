@@ -30,7 +30,7 @@
               <!-- テキスト -->
               <template v-if="n.type === 1">
                 <input
-                  class="c-form-input"
+                  
                   v-model="submitData[n.key]"
                   :name="n.key"
                   :id="n.key"
@@ -41,7 +41,7 @@
               <template v-if="n.type === 2">
                 <textarea
                   v-model="submitData[n.key]"
-                  class="c-form-input"
+                  
                   rows="4"
                   cols="60"
                   :name="n.key"
@@ -72,7 +72,7 @@
                   v-model="submitData[n.key]"
                   :name="n.key"
                   :id="n.key"
-                  class="c-form-input"
+                  
                 >
                   <option label="選択なし" value="">選択なし</option>
                   <option
@@ -109,7 +109,7 @@
                     @change="setYMD(n.key)"
                     :name="n.key + '_y'"
                     :id="n.key + '_y'"
-                    class="c-form-input"
+                    
                   >
                     <option label="選択なし" value="">選択なし</option>
                     <option
@@ -126,7 +126,7 @@
                     v-model="m"
                     @change="setYMD(n.key)"
                     :name="n.key + '_m'"
-                    class="c-form-input"
+                    
                   >
                     <option label="選択なし" value="">選択なし</option>
                     <option label="01" value="01">01</option>
@@ -146,7 +146,7 @@
                     v-model="d"
                     @change="setYMD(n.key)"
                     :name="n.key + '_d'"
-                    class="c-form-input"
+                    
                   >
                     <option label="選択なし" value="">選択なし</option>
                     <option label="01" value="01">01</option>
