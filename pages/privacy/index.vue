@@ -1,6 +1,6 @@
 <template>
-  <div class="l-container">
-    <UiNavLink v-bind="details" />
+  <div>
+    <UiNavLink :subject="details.subject" />
     <ContentPlainBody v-bind="details" />
   </div>
 </template>

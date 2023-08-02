@@ -67,7 +67,7 @@
       position: relative;
       @include pc() {
         flex: 0 0 220px;
-        margin-left: var(--spacing-horizontal-pc);
+        margin-left: calc( var(--spacing-horizontal-pc) * 2 );
       }
       @include sp() {
         width: 100%;

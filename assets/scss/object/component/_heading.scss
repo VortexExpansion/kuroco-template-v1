@@ -13,7 +13,12 @@
   border-bottom: 1px solid var(--color-primary);
   font-size: var(--font-size-h2);
   &:not(:first-child) {
-    margin-top: var(--spacing);
+    @include pc() {
+      margin-top: var(--spacing-vertical-pc);
+    }
+    @include sp() {
+      margin-top: var(--spacing-vertical-sp);
+    }
   }
 }
 .c-heading--lv3 {
@@ -23,7 +28,12 @@
   background-color: var(--color-light-gray);
   font-size: var(--font-size-h3);
   &:not(:first-child) {
-    margin-top: var(--spacing);
+    @include pc() {
+      margin-top: calc( var(--spacing) * 2 );
+    }
+    @include sp() {
+      margin-top: var(--spacing);
+    }
   }
 }
 .c-heading--lv4 {

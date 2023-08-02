@@ -1,11 +1,13 @@
 .c-form {
   &-group {
     display: block;
-    margin-bottom: var(--spacing);
+    margin-bottom: calc( var(--spacing) * 2 );
   }
   &-label {
     display: inline-block;
     margin-bottom: calc( var(--spacing) / 2 );
+    font-size: var(--font-size-small);
+    font-weight: bold;
     &__required {
       color: var(--color-error);
     }
@@ -14,11 +16,27 @@
   input[type="password"],
   input[type="tel"],
   input[type="email"],
+  textarea,
   select {
     display: block;
     width: 100%;
     padding: var(--spacing);
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius);
+  }
+  a:not(.c-button) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    vertical-align: middle;
+    & + label {
+      display: inline-block;
+      padding: calc( var(--spacing) / 2 ) 0;
+      cursor: pointer;
+    }
   }
 }

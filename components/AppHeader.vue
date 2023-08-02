@@ -74,13 +74,13 @@
           <div class="l-header__nav__inner">
             <ul class="l-header__nav__list">
               <li class="l-header__nav__list__item">
-                <NuxtLink to="/company/">会社概要</NuxtLink>
+                <NuxtLink to="/company/">企業情報</NuxtLink>
               </li>
               <li class="l-header__nav__list__item">
                 <NuxtLink to="/service/">事業内容</NuxtLink>
               </li>
               <li class="l-header__nav__list__item">
-                <NuxtLink to="/news/">ニュース</NuxtLink>
+                <NuxtLink to="/news/">ニュースリリース</NuxtLink>
               </li>
               <li class="l-header__nav__list__item">
                 <NuxtLink to="/ltd-news/">限定記事</NuxtLink>

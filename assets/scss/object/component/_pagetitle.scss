@@ -12,7 +12,7 @@
   &__date {
     display: inline-block;
     margin-top: calc(var(--spacing) * 2);
-    font-size: 0.75rem;
+    font-size: var(--font-size-x-small);
     z-index: 10;
   }
 }

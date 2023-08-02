@@ -1,11 +1,11 @@
 <template>
-  <div class="l-container">
+  <div>
     <UiNavLink :subject="subject" />
     <section>
       <UiPagetitle :subject="subject" />
       <div class="l-container--col-2 l-container--contents">
         <div class="l-container--col-2__main">
-          <NewsList :subject="subject" v-bind="news" />
+          <NewsList v-bind="news" />
         </div>
         <ContentSideBar :itemList="reverseItems" />
       </div>
@@ -17,7 +17,7 @@
 export default {
   data() {
     return {
-      subject: "ニュース",
+      subject: "ニュースリリース",
     };
   },
   watchQuery: ["filter"],

@@ -47,34 +47,33 @@ tag:
 %button {
   display: inline-block;
   position: relative;
-  font-size: 1em;
+  font-size: var(--font-size-base);
   line-height: 1;
-  color: var(--color-white);
   padding: var(--spacing);
+  border: 1px solid;
   border-radius: var(--border-radius);
-  background-color: var(--color-primary);
-  transition: var(--transition-seconds) background-color;
+  transition: var(--transition-seconds) border-color, var(--transition-seconds) background-color, var(--transition-seconds) color;
   cursor: pointer;
 
-  &.icon-arrow {
-    &-right {
-      &:before {
-        right: 12px;
-        @extend %icon-arrow;
-        // @extend %fa_properties;
-        // content: $fa-var-angle-right;
-      }
-    }
+  // &.icon-arrow {
+  //   &-right {
+  //     &:before {
+  //       right: 12px;
+  //       @extend %icon-arrow;
+  //       // @extend %fa_properties;
+  //       // content: $fa-var-angle-right;
+  //     }
+  //   }
 
-    &-left {
-      &:after {
-        left: 12px;
-        @extend %icon-arrow;
-        // @extend %fa_properties;
-        // content: $fa-var-angle-left;
-      }
-    }
-  }
+  //   &-left {
+  //     &:after {
+  //       left: 12px;
+  //       @extend %icon-arrow;
+  //       // @extend %fa_properties;
+  //       // content: $fa-var-angle-left;
+  //     }
+  //   }
+  // }
 
   &:hover {
     background-color: var(--color-primary-dark);
@@ -83,12 +82,23 @@ tag:
 
 .c-button {
   @extend %button;
-
+  border-color: var(--color-border);
+  background-color: var(--color-white);
+  color: var(--color-base);
 
   &:disabled {
     @extend %button;
     background-color: #bbb;
     pointer-events: none;
+  }
+
+  &--primary {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
   }
 
   &--return {

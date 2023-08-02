@@ -50,7 +50,7 @@
           <div class="c-form-group">
             <button
               v-on:click.prevent="resetpassSubmit2"
-              class="c-button u-width-100"
+              class="c-button c-button--primary u-width-100"
             >
               送信
             </button>
@@ -77,7 +77,7 @@
           <div class="c-form-group">
             <button
               v-on:click.prevent="resetpassSubmit"
-              class="c-button u-width-100"
+              class="c-button c-button--primary u-width-100"
             >
               送信
             </button>

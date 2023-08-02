@@ -1,16 +1,13 @@
 <template>
-  <li class="c-topics__card__item">
-    <NuxtLink class="c-topics__card__link" :to="href">
-      <div class="c-topics__card__picture">
-        <img alt="dummy picture" :src="imageUrl" />
-      </div>
-      <div class="c-topics__card__contents">
-        <div class="c-topics__title c-topics__space">
-          {{ text }}
-        </div>
-      </div>
-    </NuxtLink>
-  </li>
+  <NuxtLink class="c-card" :to="href">
+    <div class="c-card__image">
+      <img alt="dummy picture" :src="imageUrl" />
+    </div>
+    <p class="c-card__heading">Heading</p>
+    <p class="c-card__text">
+      {{ subject }}
+    </p>
+  </NuxtLink>
 </template>
 
 <script>

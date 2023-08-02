@@ -1,16 +1,14 @@
 <template>
-  <div class="l-container--wrap">
+  <div>
     <UiNavLink :path="path" :subject="details.subject" />
-    <div
-      v-if="details != null"
-      class="l-container--large l-container--contents"
-    >
-      <ContentDetailBody :details="details" :button="button" />
+    <UiPagetitle :subject="details.group_nm" />
+    <div class="l-container--large l-container--contents">
+      <ContentDetailBody v-if="details != null" :details="details" :button="button" />
+      <div v-else-if="profileRes.member_id != null">
+        プレミアム会員限定記事です。
+      </div>
+      <div v-else>ログインしてください。</div>
     </div>
-    <div v-else-if="profileRes.member_id != null">
-      プレミアム会員限定記事です。
-    </div>
-    <div v-else>ログインしてください。</div>
   </div>
 </template>
 

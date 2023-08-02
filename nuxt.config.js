@@ -1,3 +1,4 @@
+console.log("base_url:"+process.env.BASE_URL);
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -48,7 +49,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: process.env.BASE_URL,
+    baseURL: 'https://hasebetest-template-test-simple.g.kuroco.app',
     // クロスオリジンでのcookieを有効化 https://kuroco.app/ja/docs/tutorials/integrate-login/
     credentials: true,
     withCredentials: true

@@ -1,5 +1,5 @@
 <template>
-  <div class="l-container">
+  <div>
     <UiNavLink :subject="subject" />
     <section>
       <UiPagetitle :subject="subject" />
@@ -17,7 +17,6 @@
           </div>
           <UiAlertError v-if="error" :error="error" />
           <form class="c-form">
-
             <div
               v-for="n in response.details.cols"
               :key="n.key"
@@ -30,7 +29,6 @@
               <!-- テキスト -->
               <template v-if="n.type === 1">
                 <input
-                  
                   v-model="submitData[n.key]"
                   :name="n.key"
                   :id="n.key"
@@ -41,7 +39,6 @@
               <template v-if="n.type === 2">
                 <textarea
                   v-model="submitData[n.key]"
-                  
                   rows="4"
                   cols="60"
                   :name="n.key"
@@ -51,16 +48,17 @@
               </template>
               <!--ラジオボタン-->
               <template v-if="n.type === 3">
-                <ul class="c-form-toggle__list--inline">
+                <ul>
                   <li v-for="option in n.options" :key="option.key">
-                    <label>
-                      <input
-                        v-model="submitData[n.key]"
-                        type="radio"
-                        :name="n.key"
-                        :value="option.key"
-                        class="c-form-toggle__radio"
-                      />
+                    <input
+                      v-model="submitData[n.key]"
+                      type="radio"
+                      :name="n.key"
+                      :value="option.key"
+                      :id="n.key + '-' + option.key"
+                      class="c-form-toggle__radio"
+                    />
+                    <label :for="n.key + '-' + option.key">
                       {{ option.value }}
                     </label>
                   </li>
@@ -68,12 +66,7 @@
               </template>
               <!--セレクトボックス-->
               <template v-if="n.type === 4">
-                <select
-                  v-model="submitData[n.key]"
-                  :name="n.key"
-                  :id="n.key"
-                  
-                >
+                <select v-model="submitData[n.key]" :name="n.key" :id="n.key">
                   <option label="選択なし" value="">選択なし</option>
                   <option
                     v-for="option in n.options"
@@ -87,17 +80,19 @@
               </template>
               <!--チェックボックス-->
               <template v-if="n.type === 5">
-                <ul class="c-form-toggle__list--inline">
+                <ul>
                   <li v-for="option in n.options" :key="option.key">
-                    <label
-                      ><input
-                        type="checkbox"
-                        :id="option.key"
-                        :value="option.key"
-                        v-model="submitData[n.key]"
-                        class="c-form-toggle__checkbox"
-                      />{{ option.value }}</label
-                    >
+                    <input
+                      type="checkbox"
+                      :name="n.key + '[]'"
+                      :value="option.key"
+                      :id="n.key + '-' + option.key"
+                      v-model="submitData[n.key]"
+                      class="c-form-toggle__checkbox"
+                    />
+                    <label :for="n.key + '-' + option.key">{{
+                      option.value
+                    }}</label>
                   </li>
                 </ul>
               </template>
@@ -109,7 +104,6 @@
                     @change="setYMD(n.key)"
                     :name="n.key + '_y'"
                     :id="n.key + '_y'"
-                    
                   >
                     <option label="選択なし" value="">選択なし</option>
                     <option
@@ -126,7 +120,6 @@
                     v-model="m"
                     @change="setYMD(n.key)"
                     :name="n.key + '_m'"
-                    
                   >
                     <option label="選択なし" value="">選択なし</option>
                     <option label="01" value="01">01</option>
@@ -146,7 +139,6 @@
                     v-model="d"
                     @change="setYMD(n.key)"
                     :name="n.key + '_d'"
-                    
                   >
                     <option label="選択なし" value="">選択なし</option>
                     <option label="01" value="01">01</option>
@@ -198,25 +190,29 @@
               <template
                 v-if="n.type === 10 && n.attribute.selection_type === 'single'"
               >
-                <table class="matrix_input">
-                  <tbody>
+                <table class="u-width-100">
+                  <thead>
                     <tr>
                       <th></th>
                       <th
                         v-for="(options_col, i_col) in n.options[0].value"
                         :key="i_col"
+                        scope="col"
                       >
                         {{ options_col }}
                       </th>
                     </tr>
+                  </thead>
+                  <tbody>
                     <tr
                       v-for="(options_row, i_row) in n.options[1].value"
                       :key="i_row"
                     >
-                      <th>{{ options_row }}</th>
+                      <th scope="row">{{ options_row }}</th>
                       <td
                         v-for="(options_col, i_col) in n.options[0].value"
                         :key="i_col"
+                        class="u-text-align-center"
                       >
                         <input
                           v-model="submitData[n.key][i_row - 1]"
@@ -242,8 +238,8 @@
                   n.type === 10 && n.attribute.selection_type === 'multiple'
                 "
               >
-                <table class="matrix_input">
-                  <tbody>
+                <table class="u-width-100">
+                  <thead>
                     <tr>
                       <th></th>
                       <th
@@ -253,6 +249,8 @@
                         {{ options_col }}
                       </th>
                     </tr>
+                  </thead>
+                  <tbody>
                     <tr
                       v-for="(options_row, i_row) in n.options[1].value"
                       :key="i_row"
@@ -261,6 +259,7 @@
                       <td
                         v-for="(options_col, i_col) in n.options[0].value"
                         :key="i_col"
+                        class="u-text-align-center"
                       >
                         <input
                           type="checkbox"
@@ -279,43 +278,6 @@
             </div>
 
             <div class="c-form-policyAgree">
-              <div class="c-form-policyAgree__contents">
-                <h3 class="c-heading--lv3">個人情報保護方針</h3>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <h4 class="c-heading--lv4">１．個人情報に関する個人の尊重</h4>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <h4 class="c-heading--lv4">２．個人情報保護体制</h4>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <h4 class="c-heading--lv4">３．個人情報の安全管理</h4>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <h4 class="c-heading--lv4">
-                  ４．個人情報に関する法令、国が定める指針及びその他の規範の遵守
-                </h4>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <h4 class="c-heading--lv4">
-                  ５．個人情報の開示・訂正・削除・苦情
-                </h4>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <h4 class="c-heading--lv4">
-                  ６．マネジメントシステムの継続的改善
-                </h4>
-                <p>
-                  ダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミーダミー
-                </p>
-                <p class="c-text--align-right">XXXX年XX月XX日</p>
-              </div>
               <p class="c-form-policyAgree__check">
                 <label
                   ><input
@@ -331,7 +293,7 @@
               </p>
             </div>
             <button
-              class="c-button u-width-100"
+              class="c-button c-button--primary u-width-100"
               type="submit"
               id="inquiry_item_button_confirm"
               :class="{ 'c-button--disabled': !checked }"
@@ -348,7 +310,7 @@
 </template>
 
 <script>
-import AlertError from '../../components/ui/AlertError.vue';
+import AlertError from "../../components/ui/AlertError.vue";
 export default {
   components: { AlertError },
   data() {

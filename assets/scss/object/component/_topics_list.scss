@@ -13,13 +13,18 @@
   &__date {
     flex: 0 0 auto;
     margin-right: var(--spacing);
-    font-size: 0.8em;
+    font-size: var(--font-size-x-small);
   }
   &__title {
     flex: 1 1 100%;
     margin: 0;
     padding-top: calc(var(--spacing) / 2);
     transition: var(--transition-seconds) color;
+  }
+  &:hover {
+    .c-topics__title {
+      color: var(--color-primary);
+    }
   }
 }
 

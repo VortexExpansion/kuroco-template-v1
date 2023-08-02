@@ -1,17 +1,19 @@
 <template>
-  <article class="c-article p-newsDetail">
-    <div class="p-newsDetail__head">
-      <time class="p-newsDetail__head__date" :datetime="details.ymd">{{
-        details.ymd
-      }}</time>
-      <div class="p-newsDetail__head__label">
-        {{ details.contents_type_nm }}
-      </div>
-      <h1 class="c-heading--lv1 p-newsDetail__head__heading">
+  <article class="c-article">
+    <header>
+      <h1 class="c-heading--lv1">
         {{ details.subject }}
       </h1>
+      <time class="c-topics__date" :datetime="details.ymd">{{
+        details.ymd
+      }}</time>
+      <span class="c-badge">
+        {{ details.contents_type_nm }}
+      </span>
+    </header>
+    <div class="l-container--contents">
+      <div v-html="details.contents"></div>
     </div>
-    <div v-html="details.contents"></div>
     <UiButton v-if="button" class="p-newsDetail__foot" :button="button" />
   </article>
 </template>

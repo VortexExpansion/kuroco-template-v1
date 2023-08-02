@@ -33,7 +33,8 @@ li {
 }
 
 a {
-  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic", "MS UI Gothic", Helvetica, Arial;
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic",
+    "MS UI Gothic", Helvetica, Arial;
   text-decoration: none;
   color: inherit;
 
@@ -44,6 +45,7 @@ a {
 
 img {
   vertical-align: top;
+  max-width: 100%;
 }
 
 html {
@@ -62,7 +64,8 @@ body {
   min-height: 100vh;
   color: var(--color-base);
   font-size: var(--font-size-base);
-  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic", "MS UI Gothic", Helvetica, Arial;
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic",
+    "MS UI Gothic", Helvetica, Arial;
 }
 
 button,
@@ -72,9 +75,12 @@ select,
 textarea {
   color: var(--color-base);
   font-size: var(--font-size-base);
-  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic", "MS UI Gothic", Helvetica, Arial;
+  font-family: "Hiragino Kaku Gothic Pro", sans-serif, Meiryo, "MS PGothic",
+    "MS UI Gothic", Helvetica, Arial;
 }
-::placeholder { color: #aaa; }
+::placeholder {
+  color: #aaa;
+}
 
 button,
 input[type="button"],
@@ -84,4 +90,17 @@ input[type="submit"] {
 
 iframe {
   vertical-align: top;
+}
+
+table {
+  border: 1px solid var(--color-border);
+  border-collapse: collapse;
+  th,
+  td {
+    padding: var(--spacing);
+    border: 1px solid var(--color-border);
+  }
+  th {
+    background-color: var(--color-light-gray);
+  }
 }

@@ -1,10 +1,12 @@
 <template>
-  <section class="l-container--large l-container--contents t-article-list">
-    <ul v-if="cards.length" class="c-topics__card__list">
-      <UiCard v-for="card in cards" :key="card.href" v-bind="card" />
+  <div>
+    <ul v-if="cards.length" class="c-card-list c-card-list--col-3">
+      <li v-for="card in cards" :key="card.href">
+        <UiCard v-bind="card" />
+      </li>
     </ul>
     <UiButton v-if="homePage" :button="button" />
-  </section>
+  </div>
 </template>
 
 <script>

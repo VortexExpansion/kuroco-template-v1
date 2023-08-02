@@ -1,15 +1,13 @@
 <template>
-  <div class="l-container">
+  <div>
     <UiNavLink :path="path" :subject="details.subject" />
-    <section>
-      <UiPagetitle :subject="details.subject" :ymd="details.ymd" />
-      <div class="l-container--col-2 l-container--contents">
-        <div class="l-container--col-2__main">
-          <ContentDetailBody :details="details" :button="button" />
-        </div>
-        <ContentSideBar :itemList="reverseItems" />
+    <UiPagetitle :subject="details.group_nm" />
+    <div class="l-container--col-2 l-container--contents">
+      <div class="l-container--col-2__main">
+        <ContentDetailBody :details="details" :button="button" />
       </div>
-    </section>
+      <ContentSideBar :itemList="reverseItems" />
+    </div>
   </div>
 </template>
 

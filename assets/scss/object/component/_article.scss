@@ -27,4 +27,8 @@
       padding: var(--spacing) 0 var(--spacing) var(--spacing);
     }
   }
+  a:not([class]) {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
 }

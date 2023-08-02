@@ -122,7 +122,7 @@
           </li>
         </ul>
       </nav>
-      <p class="l-footer__copyright">© 2023 * All Rights Reserved.</p>
+      <p class="l-footer__copyright">© 2023 CompanyName Inc. All Rights Reserved.</p>
     </div>
   </footer>
 </template>

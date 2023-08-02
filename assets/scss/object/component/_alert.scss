@@ -20,7 +20,7 @@
   }
   &__message {
     margin: calc(var(--spacing) / 2) 0;
-    font-size: 0.9em;
+    font-size: var(--font-size-small);
     &:last-child {
       margin-bottom: 0;
     }
