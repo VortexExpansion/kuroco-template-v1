@@ -1,98 +1,56 @@
-/*
----
-name: base button
-category:
- - component/button
-tag:
- - base
- - button
----
-
-## This is base button
-
-* Base button style.
-* Use `a` or `button` tag.
-
-```html sample
-<div>
-  <button class="c-button">ボタン</button>
-  <button class="c-button icon-arrow-right">ボタン</button>
-  <button class="c-button icon-arrow-left">ボタン</button>
-</div>
-<div>
-  <button class="c-button--strong">強調ボタン</button>
-  <button class="c-button--strong icon-arrow-right">強調ボタン</button>
-  <button class="c-button--strong icon-arrow-left">強調ボタン</button>
-</div>
-<div>
-  <button class="c-button--disabled">非活性ボタン</button>
-  <button class="c-button--disabled icon-arrow-right">非活性ボタン</button>
-  <button class="c-button--disabled icon-arrow-left">非活性ボタン</button>
-</div>
-<div>
-  <button class="c-button--return">戻るボタン</button>
-  <button class="c-button--return icon-arrow-right">戻るボタン</button>
-  <button class="c-button--return icon-arrow-left">戻るボタン</button>
-</div>
-```
-*/
-%icon-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-weight: bold;
-  @include fz(18);
-}
-
 %button {
   display: inline-block;
   position: relative;
   font-size: var(--font-size-base);
   line-height: 1;
-  padding: var(--spacing);
+  margin-top: var(--spacing);
+  padding: calc( var(--spacing) * 1.25);
   border: 1px solid;
   border-radius: var(--border-radius);
   transition: var(--transition-seconds) border-color, var(--transition-seconds) background-color, var(--transition-seconds) color;
   cursor: pointer;
-
-  // &.icon-arrow {
-  //   &-right {
-  //     &:before {
-  //       right: 12px;
-  //       @extend %icon-arrow;
-  //       // @extend %fa_properties;
-  //       // content: $fa-var-angle-right;
-  //     }
-  //   }
-
-  //   &-left {
-  //     &:after {
-  //       left: 12px;
-  //       @extend %icon-arrow;
-  //       // @extend %fa_properties;
-  //       // content: $fa-var-angle-left;
-  //     }
-  //   }
-  // }
-
-  &:hover {
-    background-color: var(--color-primary-dark);
-  }
 }
 
 .c-button {
   @extend %button;
-  border-color: var(--color-border);
-  background-color: var(--color-white);
-  color: var(--color-base);
-
+  display: inline-flex;
+  align-items: center;
+  border-color: var(--color-base);
+  background-color: var(--color-base);
+  color: var(--color-white);
+  svg {
+    transition: var(--transition-seconds);
+  }
+  &::after {
+    display: inline-block;
+    width: calc( var(--font-size-base) / 2 );
+    height: calc( var(--font-size-base) / 2 );
+    margin: 0 calc( var(--spacing) / 3 ) 0 var(--spacing);
+    border-top: 1px solid var(--color-white);
+    border-right: 1px solid var(--color-white);
+    transform: rotate(45deg);
+    transition: var(--transition-seconds) border-color;
+    content: "";
+  }
+  &:hover {
+    color: var(--color-base);
+    background-color: var(--color-white);
+    svg path { 
+      stroke: var(--color-base);
+    }
+    &::after {
+      border-color: var(--color-base);
+    }
+  }
   &:disabled {
     @extend %button;
+    border-color: #bbb;
     background-color: #bbb;
+    color: #666;
     pointer-events: none;
   }
-
   &--primary {
+    @extend %button;
     border-color: var(--color-primary);
     background-color: var(--color-primary);
     color: var(--color-white);
@@ -101,22 +59,4 @@ tag:
     }
   }
 
-  &--return {
-    @extend %button;
-    color: var(--color-primary);
-    background-color: var(--color-white);
-    border: solid 1px var(--color-primary);
-
-    &:hover {
-      background-color: darken($c_white, 10%);
-    }
-  }
-
-  &__outer {
-    text-align: center;
-    margin: 20px auto;
-    button{
-      margin: 0 10px;
-    }
-  }
 }

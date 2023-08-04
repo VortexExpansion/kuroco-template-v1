@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       path: [{ label: "限定記事", to: "/ltd-news/" }],
-      button: [{ type: "back", label: "限定記事一覧へ戻る", to: "/ltd-news/" }],
+      button: [{ label: "限定記事一覧へ戻る", to: "/ltd-news/" }],
     };
   },
   async asyncData({ $axios, params }) {

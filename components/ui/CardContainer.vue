@@ -5,7 +5,6 @@
         <UiCard v-bind="card" />
       </li>
     </ul>
-    <UiButton v-if="homePage" :button="button" />
   </div>
 </template>
 
@@ -20,10 +19,6 @@ export default {
     cards: {
       type: Array,
       required: true,
-    },
-    homePage: {
-      type: Boolean,
-      required: false,
     },
   },
 };

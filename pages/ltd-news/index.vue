@@ -1,26 +1,23 @@
 <template>
   <div class="l-container--wrap">
     <UiNavLink :subject="subject" />
-    <div class="l-container--large l-container--contents">
-      <div class="l-container--main">
-        <section class="p-news">
-          <h1 class="c-heading--lv1">限定記事</h1>
-
-          <div>
-            このページは会員ステータスによって表示される記事が異なるように設計されています。
-          </div>
-          <div v-if="group == null">
-            <NuxtLink to="/login/regist">新規会員登録はこちら</NuxtLink>
-          </div>
-          <div v-if="group == 104">
-            プレミアム会員へのステータス変更は<NuxtLink to="/profile/"
-              >こちら</NuxtLink
-            >
-          </div>
-          <UiCardContainer :cards="cards"></UiCardContainer>
-        </section>
+    <section>
+      <UiPagetitle :subject="subject" />
+      <div class="l-container--large l-container--contents">
+        <div>
+          このページは会員ステータスによって表示される記事が異なるように設計されています。
+        </div>
+        <div v-if="group == null">
+          <NuxtLink to="/login/regist">新規会員登録はこちら</NuxtLink>
+        </div>
+        <div v-if="group == 104">
+          プレミアム会員へのステータス変更は<NuxtLink to="/mypage/"
+            >こちら</NuxtLink
+          >
+        </div>
+        <UiCardContainer :cards="cards"></UiCardContainer>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

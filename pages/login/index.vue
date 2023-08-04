@@ -25,7 +25,7 @@
           />
         </div>
         <div class="c-form-group">
-          <button type="submit" class="c-button c-button--primary u-width-100">ログイン</button>
+          <button type="submit" class="c-button--primary u-width-100">ログイン</button>
         </div>
         <div class="u-text-align-center u-mt-25">
           <NuxtLink to="/login/regist">会員登録</NuxtLink>

@@ -43,3 +43,13 @@
     margin-top: var(--spacing);
   }
 }
+.c-heading--sub {
+  margin: var(--spacing) 0;
+  color: var(--color-primary);
+  font-size: var(--font-size-small);
+  font-family: 'Secular One', sans-serif;
+  letter-spacing: .05em;
+  .c-section--dark-block & {
+    color: #aeddfa;
+  }
+}

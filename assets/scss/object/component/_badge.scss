@@ -3,6 +3,6 @@
   border-radius: var(--border-radius);
   background-color: var(--color-secondary);
   color: var(--color-white);
-  @include fz(12);
+  font-size: var(--font-size-x-small);
   text-align: center;
 }

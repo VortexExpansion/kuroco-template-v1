@@ -277,27 +277,25 @@
               </template>
             </div>
 
-            <div class="c-form-policyAgree">
-              <p class="c-form-policyAgree__check">
-                <label
-                  ><input
-                    type="checkbox"
-                    v-model="checked"
-                    name=""
-                    value=""
-                    class="c-form-toggle__checkbox"
-                    data-js="privacyAgreeCheck"
-                  />
-                  個人情報保護方針に同意する</label
-                >
-              </p>
+            <div class="c-form-group">
+              <input
+                type="checkbox"
+                name=""
+                value=""
+                id="privacy"
+                @click="disabled = !disabled"
+              />
+              <label for="privacy">
+                <NuxtLink to="#">利用規約</NuxtLink>及び<NuxtLink to="/privacy/"
+                  >プライバシーポリシー</NuxtLink
+                >に同意する</label
+              >
             </div>
             <button
-              class="c-button c-button--primary u-width-100"
+              class="c-button--primary u-width-100"
               type="submit"
               id="inquiry_item_button_confirm"
-              :class="{ 'c-button--disabled': !checked }"
-              data-js="privacyAgreeSubmit"
+              :disabled="disabled"
               @click.prevent="handleOnSubmit"
             >
               確認する
@@ -322,7 +320,7 @@ export default {
       y: null,
       m: null,
       d: null,
-      checked: null,
+      disabled: true,
       thanksText: null,
       subject: "お問い合わせ",
     };

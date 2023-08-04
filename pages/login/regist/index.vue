@@ -43,7 +43,7 @@
             />
           </div>
           <div class="c-form-group">
-            <button type="submit" class="c-button c-button--primary u-width-100">登録</button>
+            <button type="submit" class="c-button--primary u-width-100">登録</button>
           </div>
           <div class="c-form-group u-text-align-center">
             すでに会員の方は<NuxtLink to="/login">ログイン</NuxtLink>

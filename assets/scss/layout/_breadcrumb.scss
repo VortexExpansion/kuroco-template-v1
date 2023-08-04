@@ -1,5 +1,5 @@
 .l-breadcrumb {
-  padding: var(--spacing) 0;
+  padding: calc(var(--spacing) * 2) 0;
   background-color: var(--color-light-gray);
   font-size: var(--font-size-x-small);
   ul {

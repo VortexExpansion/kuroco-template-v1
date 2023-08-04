@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       path: [{ label: "ニュース", to: "/news" }],
-      button: [{ type: "back", label: "一覧へ", to: "/news/" }],
+      button: [{ label: "ニュースリリース一覧へ戻る", to: "/news/" }],
     };
   },
   async asyncData({ $axios, params }) {

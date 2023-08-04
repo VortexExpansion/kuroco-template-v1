@@ -14,7 +14,7 @@
     <div class="l-container--contents">
       <div v-html="details.contents"></div>
     </div>
-    <UiButton v-if="button" class="p-newsDetail__foot" :button="button" />
+    <UiButton v-if="button" :button="button" />
   </article>
 </template>
 

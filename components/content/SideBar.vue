@@ -2,7 +2,7 @@
   <div class="l-container--col-2__side">
     <nav>
       <h2 class="c-heading--lv3">アーカイブ</h2>
-      <ul class="c-text--small">
+      <ul>
         <li v-for="(n, i) in itemList" :key="i">
           <template v-if="preview">
             <NuxtLink

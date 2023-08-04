@@ -1,7 +1,6 @@
 @import "assets/scss/_variables.scss";
 
-@import "assets/scss/partials/_variables.scss";
-@import "assets/scss/partials/mixin/_mixins.scss";
+@import "assets/scss/partials/_media_query.scss";
 @import "assets/scss/foundation/_normalize.scss";
 @import "assets/scss/foundation/_common.scss";
 
@@ -16,6 +15,7 @@
 @import "assets/scss/object/component/_button.scss";
 @import "assets/scss/object/component/_card.scss";
 @import "assets/scss/object/component/_form.scss";
+@import "assets/scss/object/component/_hero.scss";
 @import "assets/scss/object/component/_heading.scss";
 @import "assets/scss/object/component/_pagetitle.scss";
 @import "assets/scss/object/component/_section.scss";
