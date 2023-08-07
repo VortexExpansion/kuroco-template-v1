@@ -32,10 +32,12 @@
     }
     &__text {
       margin: var(--spacing) 0;
-      padding-left: var(--spacing);
-      font-size: var(--font-size-h4);
+      padding: 0 var(--spacing);
       font-weight: bold;
       letter-spacing: .05em;
+      @include pc() {
+        font-size: var(--font-size-h4);
+      }
     }
   }
   &::after {

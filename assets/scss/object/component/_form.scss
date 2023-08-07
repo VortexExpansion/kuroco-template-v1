@@ -1,11 +1,11 @@
 .c-form {
   &-group {
     display: block;
-    margin-bottom: calc( var(--spacing) * 2 );
+    margin-bottom: var(--spacing-large);
   }
   &-label {
     display: inline-block;
-    margin-bottom: calc( var(--spacing) / 2 );
+    margin-bottom: var(--spacing-small);
     font-size: var(--font-size-small);
     font-weight: bold;
     &__required {
@@ -37,7 +37,7 @@
     & + label {
       display: inline-block;
       margin: 0;
-      padding: calc( var(--spacing) / 2 );
+      padding: var(--spacing-small);
       cursor: pointer;
     }
   }

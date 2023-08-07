@@ -1,7 +1,8 @@
 <template>
   <section>
+    <UiNavLink :subject="subject" />
+    <UiPagetitle :subject="subject" :subheading="subheading" />
     <div class="l-container--small l-container--contents">
-      <h1 class="c-heading--lv1 u-text-align-center">会員登録</h1>
       <template v-if="signupDone">
         <UiAlertSuccess :message="message" />
       </template>
@@ -24,7 +25,6 @@
           </div>
           <div class="c-form-group">
             <label for="email" class="c-form-label">メールアドレス</label>
-            <span class="c-form-label__required">*</span>
             <input v-model="user.email" name="email" type="email" />
           </div>
           <div class="c-form-group">
@@ -68,6 +68,8 @@ export default {
       user: {},
       error: null,
       message: "登録が完了しました",
+      subject: "会員登録",
+      subheading: "Sign Up",
     };
   },
   methods: {

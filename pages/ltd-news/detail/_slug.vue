@@ -1,11 +1,11 @@
 <template>
   <div>
     <UiNavLink :path="path" :subject="details.subject" />
-    <UiPagetitle :subject="details.group_nm" />
+    <UiPagetitle :subject="details.group_nm" :subheading="subheading" />
     <div class="l-container--large l-container--contents">
       <ContentDetailBody v-if="details != null" :details="details" :button="button" />
       <div v-else-if="profileRes.member_id != null">
-        プレミアム会員限定記事です。
+        プレミアム会員会員限定コンテンツです。
       </div>
       <div v-else>ログインしてください。</div>
     </div>
@@ -16,8 +16,9 @@
 export default {
   data() {
     return {
-      path: [{ label: "限定記事", to: "/ltd-news/" }],
-      button: [{ label: "限定記事一覧へ戻る", to: "/ltd-news/" }],
+      path: [{ label: "会員限定コンテンツ", to: "/ltd-news/" }],
+      button: [{ label: "会員限定コンテンツ一覧へ戻る", to: "/ltd-news/" }],
+      subheading: "For Members",
     };
   },
   async asyncData({ $axios, params }) {

@@ -1,6 +1,5 @@
 .l-breadcrumb {
-  padding: calc(var(--spacing) * 2) 0;
-  background-color: var(--color-light-gray);
+  padding: var(--spacing-large) 0 0;
   font-size: var(--font-size-x-small);
   ul {
     display: flex;

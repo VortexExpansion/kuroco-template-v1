@@ -2,7 +2,7 @@
   <div>
     <UiNavLink :subject="subject" />
     <section>
-      <UiPagetitle :subject="subject" />
+      <UiPagetitle :subject="subject" :subheading="subheading" />
       <div class="l-container--small l-container--contents">
         <template v-if="submitted">
           <p v-html="thanksText"></p>
@@ -323,6 +323,7 @@ export default {
       disabled: true,
       thanksText: null,
       subject: "お問い合わせ",
+      subheading: "Contact",
     };
   },
   async asyncData({ $axios }) {

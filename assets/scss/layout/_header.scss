@@ -22,12 +22,12 @@
     flex: 0 1 auto;
     min-width: 100px;
     @include sp() {
-      margin-top: calc( var(--spacing) / 2 );
-      margin-bottom: calc( var(--spacing) / 2 );
+      margin-top: var(--spacing-small);
+      margin-bottom: var(--spacing-small);
     }
     a { 
       display: block;
-      padding: calc( var(--spacing) / 2 ) calc( var(--spacing) / 2 ) calc( var(--spacing) / 2 ) 0;
+      padding: var(--spacing-small) var(--spacing-small) var(--spacing-small) 0;
     }
     img,
     svg {
@@ -139,7 +139,7 @@
           & + & { margin-left: var(--spacing); }
         }
         svg {
-          margin-right: calc( var(--spacing) / 2 );
+          margin-right: var(--spacing-small);
           transition: var(--transition-seconds);
         }
         &:hover {

@@ -6,12 +6,18 @@
 .c-heading--lv1 {
   @extend %heading;
   font-size: var(--font-size-h1);
+  @include sp () {
+    font-size: var(--font-size-h1-sp);
+  }
 }
 .c-heading--lv2 {
   @extend %heading;
-  padding-bottom: calc( var(--spacing) / 2);
+  padding-bottom: var(--spacing-small);
   border-bottom: 1px solid var(--color-primary);
   font-size: var(--font-size-h2);
+  @include sp () {
+    font-size: var(--font-size-h2-sp);
+  }
   &:not(:first-child) {
     @include pc() {
       margin-top: var(--spacing-vertical-pc);
@@ -23,13 +29,16 @@
 }
 .c-heading--lv3 {
   @extend %heading;
-  padding: calc( var(--spacing) / 2) calc( var(--spacing) / 2) calc( var(--spacing) / 2) var(--spacing) ;
+  padding: var(--spacing-small) var(--spacing-small) var(--spacing-small) var(--spacing) ;
   border-left: 1px solid var(--color-primary);
   background-color: var(--color-light-gray);
   font-size: var(--font-size-h3);
+  @include sp () {
+    font-size: var(--font-size-h3-sp);
+  }
   &:not(:first-child) {
     @include pc() {
-      margin-top: calc( var(--spacing) * 2 );
+      margin-top: var(--spacing-large);
     }
     @include sp() {
       margin-top: var(--spacing);
@@ -39,6 +48,9 @@
 .c-heading--lv4 {
   @extend %heading;
   font-size: var(--font-size-h4);
+  @include sp () {
+    font-size: var(--font-size-h4-sp);
+  }
   &:not(:first-child) {
     margin-top: var(--spacing);
   }
@@ -50,6 +62,6 @@
   font-family: 'Secular One', sans-serif;
   letter-spacing: .05em;
   .c-section--dark-block & {
-    color: #aeddfa;
+    color: #f9f001;
   }
 }

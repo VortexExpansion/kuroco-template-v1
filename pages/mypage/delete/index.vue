@@ -1,8 +1,8 @@
 <template>
   <div>
-    <UiNavLink :path="path" :subject="pagetitle" />
+    <UiNavLink :path="path" :subject="subject" />
     <section>
-      <UiPagetitle :subject="pagetitle" />
+      <UiPagetitle :subject="subject" :subheading="subheading" />
       <div class="l-container--small l-container--contents">
         <template v-if="deleteDone">
           <UiAlertSuccess :message="message" />
@@ -37,13 +37,13 @@
 <script>
 export default {
   auth: false,
-
   data() {
     return {
       path: [{ label: "マイページ", to: "/mypage/" }],
       deleteDone: false,
       error: null,
-      pagetitle: "退会",
+      subject: "退会",
+      subheading: "Delete",
       message: "退会が完了しました。",
     };
   },

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <UiNavLink :path="path" :subject="pagetitle" />
+    <UiNavLink :path="path" :subject="subject" />
     <section>
-      <UiPagetitle :subject="pagetitle" />
+      <UiPagetitle :subject="subject" :subheading="subheading" />
       <div class="l-container--small l-container--contents">
         <template v-if="updateProfileDone">
           <UiAlertSuccess :message="message" />
@@ -24,7 +24,6 @@
             </div>
             <div class="c-form-group">
               <label for="email" class="c-form-label">メールアドレス</label>
-              <span class="c-form-label__required">*</span>
               <input
                 v-model="user.email"
                 name="email"
@@ -66,7 +65,8 @@ export default {
       },
       group: "通常会員",
       error: null,
-      pagetitle: "会員情報更新",
+      subject: "会員情報更新",
+      subheading: "Edit Profile",
       message: "会員情報の更新が完了しました。",
     };
   },

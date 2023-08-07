@@ -1,7 +1,8 @@
 <template>
   <section>
+    <UiNavLink :subject="subject" />
+    <UiPagetitle :subject="subject" :subheading="subheading" />
     <div class="l-container--small l-container--contents">
-      <h1 class="c-heading--lv1 u-text-align-center">パスワード再発行</h1>
       <template v-if="$route.query.token != null">
         <h1>新しいパスワードを設定する</h1>
         <form class="c-form">
@@ -100,6 +101,8 @@ export default {
       new_pass: "",
       confirm_pass: "",
       resultMessage: null,
+      subject: "パスワード再発行",
+      subheading: "Password Reset",
     };
   },
   methods: {

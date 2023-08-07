@@ -3,10 +3,12 @@
     <div class="c-card__image">
       <img alt="dummy picture" :src="imageUrl" />
     </div>
-    <p class="c-card__heading">Heading</p>
-    <p class="c-card__text">
-      {{ subject }}
-    </p>
+    <div class="c-card__body">
+      <p class="c-card__heading">Heading</p>
+      <p class="c-card__text">
+        {{ subject }}
+      </p>
+    </div>
   </NuxtLink>
 </template>
 

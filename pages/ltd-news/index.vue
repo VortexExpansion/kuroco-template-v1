@@ -2,7 +2,7 @@
   <div class="l-container--wrap">
     <UiNavLink :subject="subject" />
     <section>
-      <UiPagetitle :subject="subject" />
+      <UiPagetitle :subject="subject" :subheading="subheading" />
       <div class="l-container--large l-container--contents">
         <div>
           このページは会員ステータスによって表示される記事が異なるように設計されています。
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       group: null,
-      subject: "限定記事",
+      subject: "会員限定コンテンツ",
+      subheading: "For Members",
       cards: [],
     };
   },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <UiNavLink :path="path" :subject="details.subject" />
-    <UiPagetitle :subject="details.group_nm" />
+    <UiPagetitle :subject="details.group_nm" :subheading="subheading" />
     <div class="l-container--col-2 l-container--contents">
       <div class="l-container--col-2__main">
         <ContentDetailBody :details="details" :button="button" />
@@ -17,6 +17,7 @@ export default {
     return {
       path: [{ label: "ニュース", to: "/news" }],
       button: [{ label: "ニュースリリース一覧へ戻る", to: "/news/" }],
+      subheading: "News Release",
     };
   },
   async asyncData({ $axios, params }) {

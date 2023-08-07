@@ -1,8 +1,8 @@
 <template>
   <div>
-    <UiNavLink :subject="pagetitle" />
+    <UiNavLink :subject="subject" />
     <section>
-      <UiPagetitle :subject="pagetitle" />
+      <UiPagetitle :subject="subject" :subheading="subheading" />
       <div class="l-container--col-2 l-container--contents">
         <div class="l-container--col-2__main">
           <div class="c-article">
@@ -169,7 +169,8 @@ export default {
       error: null,
       Popup: false,
       groupUpdate: false,
-      pagetitle: "マイページ",
+      subject: "マイページ",
+      subheading: "Mypage",
       message: "会員種別の変更申請を受け付けました。メールをご確認ください。",
     };
   },

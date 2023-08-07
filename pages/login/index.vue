@@ -1,7 +1,8 @@
 <template>
   <section>
+    <UiNavLink :subject="subject" />
+    <UiPagetitle :subject="subject" :subheading="subheading" />
     <div class="l-container--small l-container--contents">
-      <h1 class="c-heading--lv1 u-text-align-center">ログイン</h1>
       <form @submit.prevent="login" class="c-form">
         <UiAlertError v-if="error" :error="errorMessage" />
         <div class="c-form-group">
@@ -49,6 +50,8 @@ export default {
           message: "メールアドレスまたはパスワードが正しくありません。",
         },
       ],
+      subject: "ログイン",
+      subheading: "Login",
     };
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <article class="c-article">
-    <UiPagetitle :subject="subject" />
+    <UiPagetitle :subject="subject" :subheading="subheading" />
     <div class="l-container--large l-container--contents">
       <div v-html="contents"></div>
     </div>
@@ -17,6 +17,10 @@ export default {
     contents: {
       type: String,
       required: true,
+    },
+    subheading: {
+      type: String,
+      required: false,
     },
   },
 };

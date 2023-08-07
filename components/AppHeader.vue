@@ -30,7 +30,7 @@
               <NuxtLink to="/news/">ニュースリリース</NuxtLink>
             </li>
             <li class="l-header__nav__list__item">
-              <NuxtLink to="/ltd-news/">限定記事</NuxtLink>
+              <NuxtLink to="/ltd-news/">会員限定コンテンツ</NuxtLink>
             </li>
             <li class="l-header__nav__list__item">
               <NuxtLink to="/contact/">お問い合わせ</NuxtLink>

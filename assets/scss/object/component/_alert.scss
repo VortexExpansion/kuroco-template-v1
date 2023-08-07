@@ -1,6 +1,6 @@
 .c-alert {
   border: 1px solid;
-  margin: calc( var(--spacing) * 2 ) 0;
+  margin: var(--spacing-large) 0;
   padding: var(--spacing);
   border-radius: var(--border-radius);
   &--error {
@@ -19,7 +19,7 @@
     font-weight: bold;
   }
   &__message {
-    margin: calc(var(--spacing) / 2) 0;
+    margin: var(--spacing-small) 0;
     font-size: var(--font-size-small);
     &:last-child {
       margin-bottom: 0;
