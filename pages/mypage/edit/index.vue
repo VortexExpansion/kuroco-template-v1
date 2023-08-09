@@ -24,12 +24,7 @@
             </div>
             <div class="c-form-group">
               <label for="email" class="c-form-label">メールアドレス</label>
-              <input
-                v-model="user.email"
-                name="email"
-                id="email"
-                type="email"
-              />
+              <input v-model="user.email" name="email" id="email" type="email" />
             </div>
             <div class="c-form-group">
               <label class="c-form-label">会員種別</label>
@@ -79,8 +74,10 @@ export default {
     this.user.name1 = this.response.details.name1;
     this.user.name2 = this.response.details.name2;
     this.user.email = this.response.details.email;
-    if ("105" in this.$auth.user.group_ids) {
-      this.group = "プレミアム会員";
+    if (this.$auth.user && this.$auth.user.group_ids) {
+      if ("105" in this.$auth.user.group_ids) {
+        this.group = "プレミアム会員";
+      }
     }
   },
   methods: {
