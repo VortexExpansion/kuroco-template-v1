@@ -282,7 +282,6 @@
 </template>
 
 <script>
-import dummyImage from "~/assets/image/600x400.png";
 export default {
   async asyncData({ $axios }) {
     const ltdList = await $axios.$get("/rcms-api/1/ltd-news/list", { params: { cnt: 3 } });

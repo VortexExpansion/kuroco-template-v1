@@ -37,7 +37,6 @@
   &__heading {
     margin: 0;
     padding: var(--spacing) 0;
-    font-size: var(--font-size-h4);
     font-weight: bold;
     transition: var(--transition-seconds) color;
     .c-card:hover & {

@@ -78,6 +78,7 @@
                 <button
                   type="button"
                   v-if="'105' in this.$auth.user.group_ids"
+                  class="c-button--primary"
                   @click="Popup = true"
                 >
                   通常会員にもどる

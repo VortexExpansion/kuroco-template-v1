@@ -1,6 +1,6 @@
 <template>
-  <div class="l-container--wrap">
-    <UiNavLink v-bind="response.details" />
+  <div>
+    <UiNavLink :subject="response.details.subject" />
     <ContentPlainBody v-bind="response.details" />
   </div>
 </template>

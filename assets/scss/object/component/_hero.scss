@@ -1,8 +1,10 @@
 .c-hero {
   position: relative;
-  padding: var(--spacing-horizontal-pc) 0 calc( var(--spacing-horizontal-pc) * 2);
+  margin-bottom: var(--spacing-vertical-pc);
+  padding: var(--spacing-horizontal-pc) 0 var(--spacing-vertical-pc);
   @include sp() {
-    padding: var(--spacing-horizontal-sp) 0 calc( var(--spacing-horizontal-sp) * 3);
+    margin-bottom: var(--spacing-vertical-sp);
+    padding: var(--spacing-horizontal-sp) 0 calc( var(--spacing-vertical-sp) * 4);
   }
   &__image {
     display: block;
@@ -16,9 +18,9 @@
   &__body {
     position: absolute;
     left: 4%;
-    bottom: 20%;
+    bottom: var(--spacing-vertical-pc);
       @include sp() {
-        bottom: 0;
+        bottom: calc( var(--spacing-vertical-sp) * -1 );
       }
     &__lead {
       margin: 0;

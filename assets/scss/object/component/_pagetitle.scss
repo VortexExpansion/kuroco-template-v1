@@ -1,6 +1,7 @@
 .c-page-title {
   padding: var(--spacing-vertical-pc) 0;
   text-align: center;
+  overflow: hidden;
   @include sp() {
     padding: var(--spacing-vertical-sp) 0;
   }
@@ -29,10 +30,15 @@
   &::before {
     background: url("~/assets/image/top-hero.png") no-repeat center;
     background-size: cover;
+    opacity: .7;
     z-index: -2;
   }
   &::after {
-    background-color: rgba(245,245,245,.6);
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: rgba(255,255,255,.2);
+    transform: skewY(6deg);
     z-index: -1;
   }
 }

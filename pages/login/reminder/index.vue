@@ -4,11 +4,12 @@
     <UiPagetitle :subject="subject" :subheading="subheading" />
     <div class="l-container--small l-container--contents">
       <template v-if="$route.query.token != null">
-        <h1>新しいパスワードを設定する</h1>
         <form class="c-form">
-          <p v-if="resultMessage !== null">
-            {{ resultMessage }}
-          </p>
+          <UiAlertSuccess v-if="message!== null" :message="message" />
+          <UiAlertError v-else-if="error !== null" :error="error" />
+          <div class="c-form-group">
+            <p>新しいパスワードを設定します。</p>
+          </div>
           <div class="c-form-group">
             <label for="temp_pass" class="c-form-label">仮パスワード</label>
             <input
@@ -60,11 +61,11 @@
       </template>
       <template v-else>
         <form class="c-form">
-          <p>パスワードのリセット</p
-          >
-          <p v-if="resultMessage !== null">
-            {{ resultMessage }}
-          </p>
+          <UiAlertSuccess v-if="message!== null" :message="message" />
+          <UiAlertError v-else-if="error !== null" :error="error" />
+          <div class="c-form-group">
+            <p>パスワードリセットのメールを送信します。</p>
+          </div>
           <div class="c-form-group">
             <label for="email" class="c-form-label">メールアドレス</label>
             <input
@@ -72,7 +73,6 @@
               name="email"
               type="email"
               id="email"
-              
             />
           </div>
           <div class="c-form-group">
@@ -100,7 +100,8 @@ export default {
       temp_pass: "",
       new_pass: "",
       confirm_pass: "",
-      resultMessage: null,
+      error: null,
+      message: null,
       subject: "パスワード再発行",
       subheading: "Password Reset",
     };
@@ -117,15 +118,15 @@ export default {
           `/rcms-api/1/reminder`,
           payload
         );
-        this.resultMessage = response.messages[0];
-      } catch (error) {
-        this.resultMessage = error.response.data.errors[0].message;
+        this.message = response.messages[0];
+      } catch (e) {
+        this.error = e.response.data.errors;
       }
     },
     //パスワードリセットの実行
     async resetpassSubmit2() {
       if (this.new_pass != this.confirm_pass) {
-        this.resultMessage = "確認用パスワードが一致していません";
+        this.message = "確認用パスワードが一致していません";
       } else {
         try {
           const payload = {
@@ -138,9 +139,9 @@ export default {
             `/rcms-api/1/reminder`,
             payload
           );
-          this.resultMessage = response.messages[0];
-        } catch (error) {
-          this.resultMessage = error.response.data.errors[0].message;
+          this.message = response.messages[0];
+        } catch (e) {
+          this.error = e.response.data.errors;
         }
       }
     },
