@@ -21,30 +21,33 @@
         <div class="l-header__nav__inner">
           <ul class="l-header__nav__list">
             <li class="l-header__nav__list__item">
-              <NuxtLink to="/company/">企業情報</NuxtLink>
+              <NuxtLink to="/company/" @click.native="Drawer = false">企業情報</NuxtLink>
             </li>
             <li class="l-header__nav__list__item">
-              <NuxtLink to="/service/">事業内容</NuxtLink>
+              <NuxtLink to="/service/" @click.native="Drawer = false">事業内容</NuxtLink>
             </li>
             <li class="l-header__nav__list__item">
-              <NuxtLink to="/news/">ニュースリリース</NuxtLink>
+              <NuxtLink to="/news/" @click.native="Drawer = false">ニュースリリース</NuxtLink>
             </li>
             <li class="l-header__nav__list__item">
-              <NuxtLink to="/ltd-news/">会員限定コンテンツ</NuxtLink>
+              <NuxtLink to="/ltd-news/" @click.native="Drawer = false">会員限定コンテンツ</NuxtLink>
             </li>
             <li class="l-header__nav__list__item">
-              <NuxtLink to="/contact/">お問い合わせ</NuxtLink>
+              <NuxtLink to="/contact/" @click.native="Drawer = false">お問い合わせ</NuxtLink>
             </li>
           </ul>
           <div class="l-header__nav__options">
             <template v-if="userName.member_id != null">
               <p class="is-sp c-text--small u-mt-0">ようこそ！{{ userName.name1 }}さん</p>
-              <NuxtLink to="/mypage" class="l-header__nav__options__button"
+              <NuxtLink to="/mypage" class="l-header__nav__options__button" @click.native="Drawer = false"
                 >マイページ</NuxtLink
               >
               <button
                 type="button"
-                @click="$auth.logout()"
+                @click="() => {
+                  Drawer = false;
+                  $auth.logout();
+                }"
                 class="is-sp l-header__nav__options__button u-display-flex u-display-flex-align-items-center"
               >
                 <svg
@@ -81,6 +84,7 @@
             </template>
             <template v-else>
               <NuxtLink
+                @click.native="Drawer = false"
                 to="/login/"
                 class="l-header__nav__options__button u-display-flex u-display-flex-align-items-center"
               >
