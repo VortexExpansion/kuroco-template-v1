@@ -34,7 +34,6 @@
           <NuxtLink to="/news/" class="c-button">一覧を見る</NuxtLink>
         </div>
         <NewsList
-          :homePage="homePage"
           v-bind="news"
           class="u-display-flex-grow-1"
         />
