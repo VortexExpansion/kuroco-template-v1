@@ -5,12 +5,12 @@
       <UiPagetitle :subject="subject" :subheading="subheading" />
       <div class="l-container--small l-container--contents">
         <template v-if="submitted">
-          <p v-html="thanksText"></p>
+          <p class="c-text--pre" v-html="thanksText"></p>
           <NuxtLink to="/" class="c-button">トップページ</NuxtLink>
         </template>
         <template v-else>
           <div class="c-form-group">
-            <p class="c-text">{{ response.details.inquiry_info }}</p>
+            <p class="c-text c-text--pre">{{ response.details.inquiry_info }}</p>
             <p class="c-text--small">
               <span class="c-form-label__required">*</span>は必須項目です。
             </p>

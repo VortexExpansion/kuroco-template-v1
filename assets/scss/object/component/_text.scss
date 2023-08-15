@@ -1,7 +1,12 @@
 .c-text {
   line-height: 2;
   margin: var(--spacing) 0;
-}
-.c-text--small {
-  font-size: var(--font-size-x-small);
+
+  &--small {
+    font-size: var(--font-size-x-small);
+  }
+
+  &--pre {
+    white-space: pre-line;
+  }
 }
