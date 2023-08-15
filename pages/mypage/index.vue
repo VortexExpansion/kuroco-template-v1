@@ -55,17 +55,13 @@
                 </dl>
                 <dl>
                   <dt>会員ステータス</dt>
-                  <dd>{{ userStatus }}</dd>
+                  <dd>{{ userTypeText }}</dd>
                 </dl>
               </div>
               <div class="u-text-align-center">
                 <button type="button"
-                  v-if="this.$auth.user && this.$auth.user.group_ids && '105' in this.$auth.user.group_ids"
                   class="c-button--primary" @click="Popup = true">
-                  通常会員にもどる
-                </button>
-                <button type="button" v-else class="c-button--primary" @click="Popup = true">
-                  プレミアム会員にアップデートする
+                  {{ premiumUser ? '通常会員にもどる' : 'プレミアム会員にアップデートする' }}
                 </button>
               </div>
             </div>
@@ -110,8 +106,12 @@
 </template>
 
 <script>
+import UserMixin from "~/mixins/user.js";
+
 export default {
   middleware: "auth",
+  mixins: [UserMixin],
+
   data() {
     return {
       error: null,
@@ -130,7 +130,7 @@ export default {
   methods: {
     async updateStatus(status) {
       try {
-        const formresponse = await this.$axios.$post("/rcms-api/1/inquiry/3", {
+        await this.$axios.$post("/rcms-api/1/inquiry/3", {
           name: this.response.details.name1 + " " + this.response.details.name2,
           email: this.response.details.email,
           ext_01: status,
@@ -141,17 +141,6 @@ export default {
       } catch (e) {
         console.error(e);
         this.error = e.response.data.errors;
-      }
-    },
-  },
-  computed: {
-    userStatus() {
-      if (this.$auth.user && this.$auth.user.group_ids) {
-        if ("105" in this.$auth.user.group_ids) {
-          return this.$auth.user.group_ids["105"];
-        } else {
-          return this.$auth.user.group_ids["104"];
-        }
       }
     },
   },

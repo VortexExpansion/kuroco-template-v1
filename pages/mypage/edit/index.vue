@@ -28,7 +28,7 @@
             </div>
             <div class="c-form-group">
               <label class="c-form-label">会員種別</label>
-              <div>{{ group }}</div>
+              <div>{{ userTypeText }}</div>
             </div>
             <div class="c-form-group">
               <button type="submit" class="c-button--primary u-width-100">
@@ -46,8 +46,11 @@
 </template>
 
 <script>
+import UserMixin from '~/mixins/user'
+
 export default {
   middleware: "auth",
+  mixins: [UserMixin],
 
   data() {
     return {
@@ -58,7 +61,6 @@ export default {
         name2: "",
         email: "",
       },
-      group: "通常会員",
       error: null,
       subject: "会員情報更新",
       subheading: "Edit Profile",
@@ -74,11 +76,6 @@ export default {
     this.user.name1 = this.response.details.name1;
     this.user.name2 = this.response.details.name2;
     this.user.email = this.response.details.email;
-    if (this.$auth.user && this.$auth.user.group_ids) {
-      if ("105" in this.$auth.user.group_ids) {
-        this.group = "プレミアム会員";
-      }
-    }
   },
   methods: {
     async updateProfile() {
