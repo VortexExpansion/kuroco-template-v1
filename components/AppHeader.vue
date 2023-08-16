@@ -2,7 +2,7 @@
   <header class="l-header" :class="{ 'is-open': Drawer }">
     <div class="l-header__inner">
       <div class="l-header__logo">
-        <NuxtLink to="/"
+        <NuxtLink to="/" @click.native="Drawer = false"
           ><img src="~/assets/image/logo.svg" alt="Company Name" />
         </NuxtLink>
       </div>
