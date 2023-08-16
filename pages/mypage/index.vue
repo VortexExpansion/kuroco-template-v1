@@ -7,7 +7,7 @@
         <div class="l-container--col-2__main">
           <div class="c-article">
             <div v-if="Popup" class="l-container--small">
-              <template v-if="'105' in this.$auth.user.group_ids">
+              <template v-if="premiumUser">
                 <div class="c-form-group">
                   <p>
                     プレミアム会員をやめ、通常会員に戻ります。<br />よろしいですか？
@@ -22,7 +22,7 @@
                   </button>
                 </div>
               </template>
-              <template v-else>
+              <template v-else-if="normalUser">
                 <div class="c-form-group">
                   <p>
                     プレミアム会員にアップデートします。<br />よろしいですか？
@@ -58,10 +58,11 @@
                   <dd>{{ userTypeText }}</dd>
                 </dl>
               </div>
-              <div class="u-text-align-center">
+              <div class="u-text-align-center" v-if="userGroupIds">
                 <button type="button"
                   class="c-button--primary" @click="Popup = true">
-                  {{ premiumUser ? '通常会員にもどる' : 'プレミアム会員にアップデートする' }}
+                  <span v-if="premiumUser">通常会員にもどる</span>
+                  <span v-if="normalUser">プレミアム会員にアップデートする</span>
                 </button>
               </div>
             </div>
@@ -80,7 +81,7 @@
                   class="c-button u-display-flex u-display-flex-justify-content-between u-width-100">退会</NuxtLink>
               </li>
               <li>
-                <button type="button" @click="$auth.logout()"
+                <button type="button" @click="() => $auth.logout()"
                   class="c-button u-display-flex u-display-flex-justify-content-between u-width-100">
                   <span>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +125,7 @@ export default {
   },
   async asyncData({ $axios }) {
     return {
-      response: await $axios.$get("/rcms-api/1/member/me"),
+      response: await $axios.$get("/rcms-api/1/member/me")
     };
   },
   methods: {
