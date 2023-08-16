@@ -1,7 +1,7 @@
 <template>
   <div>
-    <UiNavLink :path="path" :subject="details.subject" />
-    <UiPagetitle :subject="details.group_nm" :subheading="subheading" />
+    <UiNavLink v-if="details != null" :path="path" :subject="details.subject" />
+    <UiPagetitle v-if="details != null" :subject="details.group_nm" :subheading="subheading" />
     <div class="l-container--large l-container--contents">
       <ContentDetailBody v-if="details != null" :details="details" :button="button" />
       <div v-else-if="profileRes.member_id != null">
