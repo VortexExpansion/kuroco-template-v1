@@ -276,7 +276,6 @@
         </div>
       </div>
     </section>
-    <KurocoChat />
   </div>
 </template>
 
