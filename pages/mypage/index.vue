@@ -55,14 +55,13 @@
                 </dl>
                 <dl>
                   <dt>会員ステータス</dt>
-                  <dd>{{ userTypeText }}</dd>
+                  <dd>{{ userStatusText }}</dd>
                 </dl>
               </div>
-              <div class="u-text-align-center" v-if="userGroupIds">
+              <div class="u-text-align-center" v-if="userStatusText">
                 <button type="button"
                   class="c-button--primary" @click="Popup = true">
-                  <span v-if="premiumUser">通常会員にもどる</span>
-                  <span v-if="normalUser">プレミアム会員にアップデートする</span>
+                  {{ userButtonText }}
                 </button>
               </div>
             </div>
@@ -122,6 +121,30 @@ export default {
       subheading: "Mypage",
       message: "会員種別の変更申請を受け付けました。メールをご確認ください。",
     };
+  },
+  computed: {
+    userStatusText() {
+      const groupId = this.response?.details?.group_ids?.['0'];
+      switch (groupId) {
+        case "104":
+          return "通常会員";
+        case "105":
+          return "プレミアム会員";
+        default:
+          return "";
+      }
+    },
+    userButtonText() {
+      const groupId = this.response?.details?.group_ids?.['0'];
+      switch (groupId) {
+        case "104":
+          return "プレミアム会員にアップデートする";
+        case "105":
+          return "通常会員にもどる";
+        default:
+          return "";
+      }
+    }
   },
   async asyncData({ $axios }) {
     return {
