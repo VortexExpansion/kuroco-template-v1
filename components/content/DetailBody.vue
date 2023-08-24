@@ -14,7 +14,12 @@
     <div class="l-container--contents">
       <div v-html="details.contents"></div>
     </div>
-    <UiButton v-if="button" :button="button" />
+    <template v-if="button">
+      <hr>
+      <div class="l-container--contents u-pt-30 u-text-align-center">
+        <NuxtLink v-for="item in button" :key="item.label" :to="item.to" class="c-button">{{ item.label }}</NuxtLink>
+      </div>
+    </template>
   </article>
 </template>
 
