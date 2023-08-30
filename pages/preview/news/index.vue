@@ -1,9 +1,12 @@
 <template>
-  <div class="l-container--wrap">
-    <UiNavLink :path="path" :subject="response.details.subject" />
-    <div class="l-container--middle l-container--contents">
-      <ContentDetailBody :details="response.details" :button="button" />
-      <ContentSideBar :preview="preview" :itemList="master.list" />
+  <div>
+    <UiNavLink :path="path" :subject="details.subject" />
+    <UiPagetitle :subject="details.group_nm" :subheading="subheading" />
+    <div class="l-container--col-2 l-container--contents">
+      <div class="l-container--col-2__main">
+        <ContentDetailBody :details="details" :button="button" />
+      </div>
+      <ContentSideBar :itemList="reverseItems" />
     </div>
   </div>
 </template>
@@ -12,8 +15,9 @@
 export default {
   data() {
     return {
-      path: [{ label: "ニュース", to: "/news/" }],
-      button: [{ type: "back", label: "ニュース", to: "/news/" }],
+      path: [{ label: "ニュース", to: "/news" }],
+      button: [{ label: "ニュースリリース一覧へ戻る", to: "/news/" }],
+      subheading: "News Release",
       preview: true,
     };
   },

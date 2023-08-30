@@ -1,7 +1,9 @@
 <template>
   <div>
     <AppHeader />
-    <Nuxt />
+    <div class="l-container">
+      <Nuxt />
+    </div>
     <AppFooter />
   </div>
 </template>

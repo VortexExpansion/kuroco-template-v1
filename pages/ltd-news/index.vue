@@ -1,26 +1,54 @@
 <template>
   <div class="l-container--wrap">
     <UiNavLink :subject="subject" />
-    <div class="l-container--middle l-container--contents">
-      <div class="l-container--main">
-        <section class="p-news">
-          <h1 class="c-heading--lv1">限定記事</h1>
-
-          <div>
-            このページは会員ステータスによって表示される記事が異なるように設計されています。
-          </div>
+    <section>
+      <UiPagetitle :subject="subject" :subheading="subheading" />
+      <div class="l-container--large">
+        <div class="l-container--contents c-article">
+          <p>
+            このページは以下の会員ステータスによって表示の出し分けをするように設計されています。<br />
+          </p>
+          <ul>
+            <li>
+              <span class="c-badge u-mr-10">プレミアム会員限定</span
+              >プレミアム会員のみ閲覧可能
+            </li>
+            <li>
+              <span class="c-badge u-mr-10">会員限定</span
+              >会員登録をすると閲覧可能（プレミアム会員、通常会員）
+            </li>
+            <li>
+              <span class="c-badge u-mr-10">誰でも閲覧可能</span
+              >会員登録しなくても閲覧可能
+            </li>
+          </ul>
+          <p>
+            会員登録またはマイページから会員ステータスの変更、ログアウトすることで表示の確認ができます。
+          </p>
           <div v-if="group == null">
-            <NuxtLink to="/login/regist">新規会員登録はこちら</NuxtLink>
-          </div>
-          <div v-if="group == 104">
-            プレミアム会員へのステータス変更は<NuxtLink to="/profile/"
-              >こちら</NuxtLink
+            <NuxtLink to="/login/regist" class="c-button u-pa-15"
+              >会員登録</NuxtLink
             >
           </div>
-          <UiCardContainer :cards="cards"></UiCardContainer>
-        </section>
+          <div v-else-if="group == 104">
+            <NuxtLink to="/mypage" class="c-button u-pa-15"
+              >プレミアム会員へアップグレードする</NuxtLink
+            >
+          </div>
+          <div v-else>
+            <NuxtLink to="/mypage" class="c-button u-pa-15"
+              >通常会員へ戻す</NuxtLink
+            >
+          </div>
+        </div>
+        <div class="l-container--contents">
+          <UiCardList
+            v-if="newsList && newsList.length"
+            :list="newsList"
+          ></UiCardList>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -29,16 +57,9 @@ export default {
   data() {
     return {
       group: null,
-      subject: "限定記事",
-      cards: [],
+      subject: "会員限定コンテンツ",
+      subheading: "For Members",
     };
-  },
-  mounted() {
-    this.cards = this.newsList.map((news) => ({
-      href: `/ltd-news/detail/${news.topics_id}`,
-      imageUrl: `${news.ext_1.url}?width=300&height=195`,
-      text: `${news.contents_type_nm}\n${news.ymd}\n${news.subject}`,
-    }));
   },
   created() {
     if (this.$auth.user.member_id != null) {
@@ -50,9 +71,11 @@ export default {
     }
   },
   async asyncData({ $axios }) {
-    const response = await $axios.$get("/rcms-api/1/ltd-news/list");
+    const ltdList = await $axios.$get("/rcms-api/1/ltd-news/list", {
+      params: { cnt: 12 },
+    });
     return {
-      newsList: response.data.list,
+      newsList: ltdList.data.list,
     };
   },
 };

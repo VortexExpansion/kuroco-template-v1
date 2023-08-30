@@ -1,55 +1,63 @@
 <template>
-  <div class="l-container--wrap">
-    <div v-if="!signupDone">
-      <form @submit.prevent="signup">
-        <p v-if="error" :style="{ color: 'red' }">
-          {{ error }}
-        </p>
-
-        <div>
-          <label>name1</label>
-          <input
-            v-model="user.name1"
-            name="name1"
-            type="text"
-            placeholder="name1"
-          />
+  <section>
+    <UiNavLink :subject="subject" />
+    <UiPagetitle :subject="subject" :subheading="subheading" />
+    <div class="l-container--small l-container--contents">
+      <template v-if="signupDone">
+        <UiAlertSuccess :message="message" />
+      </template>
+      <template v-else>
+        <div class="c-form-group u-text-align-center">
+          <p class="c-text--small">
+            <span class="c-form-label__required">*</span>は必須項目です。
+          </p>
         </div>
-        <div>
-          <label>name2</label>
-          <input
-            v-model="user.name2"
-            name="name2"
-            type="text"
-            placeholder="name2"
-          />
-        </div>
-        <div>
-          <label>email</label>
-          <input
-            v-model="user.email"
-            name="email"
-            type="email"
-            placeholder="email"
-          />
-        </div>
-        <div>
-          <label>login_pwd</label>
-          <input
-            v-model="user.login_pwd"
-            name="login_pwd"
-            type="password"
-            placeholder="login_pwd"
-          />
-        </div>
-
-        <div>
-          <button type="submit">サインアップ</button>
-        </div>
-      </form>
+        <UiAlertError v-if="error" :error="error" />
+        <form @submit.prevent="signup" class="c-form">
+          <div class="c-form-group">
+            <label for="name1" class="c-form-label">名前（姓）</label>
+            <span class="c-form-label__required">*</span>
+            <input v-model="user.name1" name="name1" type="text" id="name1" />
+          </div>
+          <div class="c-form-group">
+            <label for="name2" class="c-form-label">名前（名）</label>
+            <input v-model="user.name2" name="name2" type="text" id="name2" />
+          </div>
+          <div class="c-form-group">
+            <label for="email" class="c-form-label">メールアドレス</label>
+            <input v-model="user.email" name="email" type="email" />
+          </div>
+          <div class="c-form-group">
+            <div class="u-display-flex">
+              <div class="u-display-flex-grow-1">
+                <label for="login_pwd" class="c-form-label">パスワード</label>
+                <span class="c-form-label__required">*</span>
+              </div>
+              <p class="u-ma-0 c-text--small">半角英数8文字以上</p>
+            </div>
+            <input
+              v-model="user.login_pwd"
+              name="login_pwd"
+              type="password"
+              id="login_pwd"
+            />
+          </div>
+          <div class="c-form-group">
+            <button type="submit" class="c-button--primary u-width-100">登録</button>
+          </div>
+          <div class="c-form-group u-text-align-center">
+            すでに会員の方は<NuxtLink to="/login">ログイン</NuxtLink>
+          </div>
+          <p class="c-text--small u-mt-25">
+            続行することで<NuxtLink to="#">利用規約</NuxtLink>及び<NuxtLink
+              to="/privacy/"
+              >プライバシーポリシー</NuxtLink
+            >に同意したこととなります。
+          </p>
+        </form>
+      </template>
     </div>
-    <div v-if="signupDone">新規登録が完了しました。</div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -57,9 +65,11 @@ export default {
   data() {
     return {
       signupDone: false,
-
       user: {},
       error: null,
+      message: "登録が完了しました",
+      subject: "会員登録",
+      subheading: "Sign Up",
     };
   },
   methods: {
@@ -74,7 +84,7 @@ export default {
         this.signupDone = true;
       } catch (e) {
         console.error(e);
-        this.error = "エラーが発生しました。";
+        this.error = e.response.data.errors;
       }
     },
   },

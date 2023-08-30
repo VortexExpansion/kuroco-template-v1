@@ -1,56 +1,95 @@
 <template>
-  <div class="l-container--wrap">
-    <p>パラメータ={{ $route.query.token }}</p>
-    <template v-if="$route.query.token != null">
-      <form>
-        <h1>新しいパスワードを設定する</h1>
-        <p v-if="resultMessage !== null">
-          {{ resultMessage }}
-        </p>
-        <div>
-          仮パスワード<input
-            v-model="temp_pass"
-            name="temp_pass"
-            type=""
-            placeholder="temp_pass"
-          />
-        </div>
-        <div>
-          新しいパスワード<input
-            v-model="new_pass"
-            name="new_pass"
-            type=""
-            placeholder="new_pass"
-          />
-        </div>
-        <div>
-          新しいパスワードの確認<input
-            v-model="confirm_pass"
-            name="confirm_pass"
-            type=""
-            placeholder="confirm_pass_pass"
-          />
-        </div>
-        <button v-on:click.prevent="resetpassSubmit2">送信</button>
-      </form>
-    </template>
-
-    <template v-else>
-      <form>
-        <h1>パスワードリセット</h1>
-        <p v-if="resultMessage !== null">
-          {{ resultMessage }}
-        </p>
-        <input
-          v-model="emailEntered"
-          name="email"
-          type="email"
-          placeholder="email"
-        />
-        <button v-on:click.prevent="resetpassSubmit">送信</button>
-      </form>
-    </template>
-  </div>
+  <section>
+    <UiNavLink :subject="subject" />
+    <UiPagetitle :subject="subject" :subheading="subheading" />
+    <div class="l-container--small l-container--contents">
+      <template v-if="$route.query.token != null">
+        <form class="c-form">
+          <UiAlertSuccess v-if="message!== null" :message="message" />
+          <UiAlertError v-else-if="error !== null" :error="error" />
+          <div class="c-form-group">
+            <p>新しいパスワードを設定します。</p>
+          </div>
+          <div class="c-form-group">
+            <label for="temp_pass" class="c-form-label">仮パスワード</label>
+            <input
+              v-model="temp_pass"
+              name="temp_pass"
+              type="password"
+              id="temp_pass"
+              placeholder="temp_pass"
+            />
+          </div>
+          <div class="c-form-group">
+            <label for="news_pass" class="c-form-label">新しいパスワード</label>
+            <input
+              v-model="new_pass"
+              name="new_pass"
+              type="password"
+              id="news_pass"
+              placeholder="new_pass"
+            />
+          </div>
+          <div class="c-form-group">
+            <div class="u-display-flex">
+              <label
+                for="confirm_pass"
+                class="c-form-label u-display-flex-grow-1"
+                >新しいパスワードの確認</label
+              >
+              <p class="u-ma-0 c-text--small">
+                確認のためもう一度入力してください
+              </p>
+            </div>
+            <input
+              v-model="confirm_pass"
+              name="confirm_pass"
+              type="password"
+              id="confirm_pass"
+              placeholder="confirm_pass_pass"
+            />
+          </div>
+          <div class="c-form-group">
+            <button
+              v-on:click.prevent="resetpassSubmit2"
+              class="c-button--primary u-width-100"
+            >
+              送信
+            </button>
+          </div>
+        </form>
+      </template>
+      <template v-else>
+        <form class="c-form">
+          <UiAlertSuccess v-if="message!== null" :message="message" />
+          <UiAlertError v-else-if="error !== null" :error="error" />
+          <div class="c-form-group">
+            <p>パスワードリセットのメールを送信します。</p>
+          </div>
+          <div class="c-form-group">
+            <label for="email" class="c-form-label">メールアドレス</label>
+            <input
+              v-model="emailEntered"
+              name="email"
+              type="email"
+              id="email"
+            />
+          </div>
+          <div class="c-form-group">
+            <button
+              v-on:click.prevent="resetpassSubmit"
+              class="c-button--primary u-width-100"
+            >
+              送信
+            </button>
+          </div>
+          <div class="c-form-group u-text-align-center">
+            <NuxtLink to="/login">ログイン</NuxtLink>
+          </div>
+        </form>
+      </template>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -61,7 +100,10 @@ export default {
       temp_pass: "",
       new_pass: "",
       confirm_pass: "",
-      resultMessage: null,
+      error: null,
+      message: null,
+      subject: "パスワード再発行",
+      subheading: "Password Reset",
     };
   },
   methods: {
@@ -76,15 +118,15 @@ export default {
           `/rcms-api/1/reminder`,
           payload
         );
-        this.resultMessage = response.messages[0];
-      } catch (error) {
-        this.resultMessage = error.response.data.errors[0].message;
+        this.message = response.messages[0];
+      } catch (e) {
+        this.error = e.response.data.errors;
       }
     },
     //パスワードリセットの実行
     async resetpassSubmit2() {
       if (this.new_pass != this.confirm_pass) {
-        this.resultMessage = "確認用パスワードが一致していません";
+        this.message = "確認用パスワードが一致していません";
       } else {
         try {
           const payload = {
@@ -97,9 +139,9 @@ export default {
             `/rcms-api/1/reminder`,
             payload
           );
-          this.resultMessage = response.messages[0];
-        } catch (error) {
-          this.resultMessage = error.response.data.errors[0].message;
+          this.message = response.messages[0];
+        } catch (e) {
+          this.error = e.response.data.errors;
         }
       }
     },

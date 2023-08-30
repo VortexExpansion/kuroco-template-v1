@@ -1,8 +1,9 @@
 <template>
-  <div class="l-container--wrap">
-    <UiNavLink :path="path" :subject="response.details.subject" />
-    <div class="l-container--middle l-container--contents">
-      <ContentDetailBody :details="response.details" :button="button" />
+  <div>
+    <UiNavLink :path="path" :subject="details.subject" />
+    <UiPagetitle :subject="details.group_nm" :subheading="subheading" />
+    <div class="l-container--large l-container--contents">
+      <ContentDetailBody v-if="details != null" :details="details" :button="button" />
     </div>
   </div>
 </template>
@@ -11,8 +12,10 @@
 export default {
   data() {
     return {
-      path: [{ label: "限定記事", to: "/ltd-news/" }],
-      button: [{ type: "back", label: "限定記事一覧へ戻る", to: "/ltd-news/" }],
+      path: [{ label: "会員限定コンテンツ", to: "/ltd-news/" }],
+      button: [{ label: "会員限定コンテンツ一覧へ戻る", to: "/ltd-news/" }],
+      subheading: "For Members",
+      preview: true,
     };
   },
   async asyncData({ $axios, route }) {
