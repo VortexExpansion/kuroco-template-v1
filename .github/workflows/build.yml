@@ -2,23 +2,29 @@ name: Build and deploy to Kuroco front
 on:
   push:
     branches:
-      - main
+      - yaml-run
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
+
 env:
-  BASE_URL: ${{secrets.BASE_URL}}
+  BRANCH: yaml-run
+  
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+    
 jobs:
   # for Pull Request (exclude merged)
   pullreq_build:
     name: Build(pullreq)
-    if: (github.repository == 'HisashiHasebe/kuroco-template-v1' && github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/kuroco stage') && github.event.issue.pull_request != null)
+    if: (github.repository == 'VortexExpansion/kuroco-template-v1' && github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/kuroco stage') && github.event.issue.pull_request != null)
     runs-on: ubuntu-latest
     steps:
       - name: "Get branch name and sha"
         id: get_branch
         run: |
-          PR=$(curl -H "Authorization: token 618a386ba13949b875aca6a978ed7be9" https://hasebetest-template-test-simple.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
+          PR=$(curl -H "X-Kuroco-Auth: token 8d90dc3cca20f1c207ce5e4c5d357742" https://sushipedia.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
           echo "::set-output name=branch::$(echo $PR | jq -r '.ref')"
           echo "::set-output name=sha::$(echo $PR | jq -r '.sha')"
       - name: Checkout Repo
@@ -48,14 +54,14 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v2
         env:
-          webhook_url: "https://hasebetest-template-test-simple.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "618a386ba13949b875aca6a978ed7be9"
-          data: '{"single_zip":"0","domain":"hasebetest-template-test-simple.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
+          webhook_url: "https://sushipedia.g.kuroco.app/direct/menu/github/"
+          webhook_secret: "8d90dc3cca20f1c207ce5e4c5d357742"
+          data: '{"single_zip":"0","domain":"sushipedia.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
           
   #for Push
   pushed_build:
     name: Build(pushed)
-    if: (github.repository == 'HisashiHasebe/kuroco-template-v1' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch'))
+    if: (github.repository == 'VortexExpansion/kuroco-template-v1' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch'))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -81,6 +87,7 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v2
         env:
-          webhook_url: "https://hasebetest-template-test-simple.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "618a386ba13949b875aca6a978ed7be9"
-          data: '{"single_zip":"0","domain":"hasebetest-template-test-simple.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+          webhook_url: "https://sushipedia.g.kuroco.app/direct/menu/github/"
+          webhook_secret: "8d90dc3cca20f1c207ce5e4c5d357742"
+          data: '{"single_zip":"0","domain":"sushipedia.g.kuroco-front.app", "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+  
